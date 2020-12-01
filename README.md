@@ -1,2 +1,2 @@
-# internetProgramming_TermProject
+# internetProgramming_TeemProject
 with Vanilla JavaScript

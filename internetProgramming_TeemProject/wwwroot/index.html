@@ -1,24 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/site.css"/>
-    <title>登录服务后台</title>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="css/loadcss.css">
 </head>
 <body>
-    <div class="container" method="POST" action="/login.asp">
-        <form id ="form" class="form">
-            <h2>服务器后台管理系统登录</h2>
-            <div class="form-control">
-                <label for="username">账号</label>
-                <input type="text" id="username" placeholder="输入用户名"/>
-            </div>
-            <div class="form-control">
-                <label for="password">密码</label>
-                <input type="password" id="password" placeholder="输入密码"/>
-            </div>
-            <button type="submit">登录</button>
+    <div id="login">
+        <h1>Login</h1>
+        <form method="POST">
+            <input type="text" required="required" placeholder="账号" name="user">
+            <br>
+            <input type="password" required="required" placeholder="密码" name="pwd">
+            <br>
+            <button type="submit" class="but" >登录/注册</button>
         </form>
     </div>
 </body>

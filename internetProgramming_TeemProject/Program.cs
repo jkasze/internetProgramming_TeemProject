@@ -11,6 +11,7 @@ namespace internetProgramming_TeemProject
 {
     public class Program
     {
+        //创建.NET通用主机
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();

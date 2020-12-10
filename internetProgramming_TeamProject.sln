@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "internetProgramming_TeemProject", "internetProgramming_TeemProject\internetProgramming_TeemProject.csproj", "{B2052D11-5E88-4EF5-A626-1F2A742F2B75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "internetProgramming_TeemProject", "internetProgramming_TeemProject\internetProgramming_TeemProject.csproj", "{B2052D11-5E88-4EF5-A626-1F2A742F2B75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

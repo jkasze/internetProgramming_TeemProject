@@ -1,15 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using internetProgramming_TeemProject.Models;
 
 
 namespace internetProgramming_TeemProject
@@ -25,7 +21,8 @@ namespace internetProgramming_TeemProject
 
         public void ConfigureServices(IServiceCollection services)
         {
-
+            //services.AddDbContext<InstituteContext>(opt =>
+                //opt.UseInMemoryDatabase("InstituteList"));
             services.AddControllers();
         }
 
@@ -36,6 +33,7 @@ namespace internetProgramming_TeemProject
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseHttpsRedirection();
@@ -46,10 +44,7 @@ namespace internetProgramming_TeemProject
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapControllers();
             });
         }
     }

@@ -5,8 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using internetProgramming_TeemProject.Models;
-
+using internetProgramming_TeemProject.Data;
+using internetProgramming_TeemProject.Services;
 
 namespace internetProgramming_TeemProject
 {
@@ -24,6 +24,11 @@ namespace internetProgramming_TeemProject
             //services.AddDbContext<InstituteContext>(opt =>
                 //opt.UseInMemoryDatabase("InstituteList"));
             services.AddControllers();
+            services.AddScoped<IInstituteRepository, InstituteRepository>();
+            services.AddDbContext<ProjectDbContext>(options =>
+            {
+                options.UseSqlite("Data Source=routine.db");
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -16,6 +16,15 @@ namespace internetProgramming_TeemProject.Data
         }
         public DbSet<Institute> Institutes { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Courseware> Coursewares { get; set; }
+        public DbSet<Enrollment> Enrollments { get; set; }
+        public DbSet<Experiment> Experiments { get; set; }
+        public DbSet<HomeWork> HomeWorks { get; set; }
+        public DbSet<Teach> Teaches { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Institute>().Property(x => x.Name).IsRequired().HasMaxLength(100);

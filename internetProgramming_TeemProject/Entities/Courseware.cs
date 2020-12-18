@@ -9,7 +9,8 @@ namespace internetProgramming_TeemProject.Entities
     public class Courseware
     {
         public Guid CoursewareId { get; set; }
-        public string CpursewareName { get; set; }
+        public string CoursewareName { get; set; }
+        //外键
         public Guid  CourseId{ get; set; }
     }
 }

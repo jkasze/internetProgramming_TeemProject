@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 
 namespace internetProgramming_TeemProject.Entities
 {
-    //学院数据表模型
-    public class Institute
+    public class Teach
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Introduction { get; set; }
-        public ICollection<Teacher> Teachers { get; set; }
+        public Guid TeacherId { get; set; }
+        public Guid CourseId { get; set; }
+
+        public Teacher Teacher { get; set; }
+        public Course Course { get; set; }
     }
 }

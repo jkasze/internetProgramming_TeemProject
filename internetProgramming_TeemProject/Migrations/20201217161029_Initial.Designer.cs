@@ -29,7 +29,7 @@ namespace internetProgramming_TeemProject.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .IsRequired()
+                        .IsRequired() 
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 

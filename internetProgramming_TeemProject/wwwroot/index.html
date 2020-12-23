@@ -6,14 +6,15 @@
     <link rel="stylesheet" type="text/css" href="css/indexStyle.css">
 </head>
 <body>
-    <img src="resource/nwu_logo.png" height="120" width="470">
     <header>
-        <h2>教务管理系统</h2>
-        <button class="cta-btn" id="open">登录</button>
+        <a href="https://www.nwu.edu.cn/index.htm"><img src="resource/nwu_logo.png" height="90" width="351" ></a>
+        <span>教务管理系统</span>
+        <br/><br/>
       </header>
+    <button class="cta-btn" id="open">登录</button>
     <div class="modal-container" id="modal">
         <div class="modal">
-          <button class="close-btn" id="close">×
+          <button class="close-btn" id="close">
           </button>
           <div class="modal-header">
             <h3>登录</h3>
@@ -37,8 +38,10 @@
                   placeholder="输入密码"
                   class="form-input"
                 />
+                  <div style="text-align: center">
+                      <input type="submit" value="登录" class="submit-btn" />
+                  </div>
               </div>
-              <input type="submit" value="登录" class="submit-btn" />
             </form>
           </div>
         </div>
@@ -50,6 +53,7 @@
         class="filter"
         placeholder="输入查找学院"
       />
+
     </div>
 
     <div id="posts-container"></div>

@@ -28,7 +28,12 @@
     position: absolute;
     left: 0px;
     top: 0px;
-    
+  }
+  body p{
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    display: block;
   }
   .form {
     padding: 30px 40px;
@@ -66,4 +71,19 @@
     padding: 10px;
     margin-top: 20px;
     width: 100%;
+  }
+  .register{
+    position:absolute;
+    right: 0px;
+    top: 0px;
+    cursor: pointer;
+    background-color: #3498db;
+    border: 2px solid #3498db;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 20px;
+    width: 10%;
   }

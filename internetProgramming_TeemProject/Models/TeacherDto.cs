@@ -12,7 +12,7 @@ namespace internetProgramming_TeemProject.Models
             public Guid Id { get; set; }
             public Guid InstituteId { get; set; }
 
-            //教师账号，通过登录账号反向获取主键
+            //教师账号，通过登录账号反向获取主
             public long TeacherNum { get; set; }
             public string TeacherNo { get; set; }
             public string TeacherName { get; set; }

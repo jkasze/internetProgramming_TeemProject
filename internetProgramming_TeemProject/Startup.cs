@@ -7,6 +7,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using internetProgramming_TeemProject.Data;
 using internetProgramming_TeemProject.Services;
+using internetProgramming_TeemProject.Entities;
+using internetProgramming_TeemProject.Models;
+using AutoMapper;
+using System;
 
 namespace internetProgramming_TeemProject
 {
@@ -24,6 +28,7 @@ namespace internetProgramming_TeemProject
             //services.AddDbContext<InstituteContext>(opt =>
                 //opt.UseInMemoryDatabase("InstituteList"));
             services.AddControllers();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IInstituteRepository, InstituteRepository>();
             services.AddDbContext<ProjectDbContext>(options =>
             {

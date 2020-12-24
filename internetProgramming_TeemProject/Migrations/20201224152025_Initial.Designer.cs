@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using internetProgramming_TeemProject.Data;
 
 namespace internetProgramming_TeemProject.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    partial class ProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201224152025_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -287,48 +289,12 @@ namespace internetProgramming_TeemProject.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7346d7ba-d17c-9014-05ae-fb0169ed0a13"),
-                            Gender = 2,
-                            InstituteId = new Guid("bbdee09c-089b-4d30-bece-44df5923716c"),
-                            TeacherName = "耿国华",
-                            TeacherNo = "2",
-                            TeacherNum = 201402L
-                        },
-                        new
-                        {
-                            Id = new Guid("494710f6-6202-fbe9-d827-1dafde50daa2"),
-                            Gender = 2,
-                            InstituteId = new Guid("bbdee09c-089b-4d30-bece-44df5923716c"),
-                            TeacherName = "徐彩霞",
-                            TeacherNo = "3",
-                            TeacherNum = 201403L
-                        },
-                        new
-                        {
                             Id = new Guid("47b70abc-98b8-4fdc-b9fa-5dd6716f6e6b"),
                             Gender = 1,
                             InstituteId = new Guid("5efc910b-2f45-43df-afee-620d40542853"),
-                            TeacherName = "王豪",
+                            TeacherName = "何路",
                             TeacherNo = "1",
                             TeacherNum = 201501L
-                        },
-                        new
-                        {
-                            Id = new Guid("5d27fb1c-f235-e1ce-fe63-ae6e664a27fa"),
-                            Gender = 1,
-                            InstituteId = new Guid("5efc910b-2f45-43df-afee-620d40542853"),
-                            TeacherName = "郭孟源",
-                            TeacherNo = "2",
-                            TeacherNum = 201502L
-                        },
-                        new
-                        {
-                            Id = new Guid("2ea277d6-50cc-025e-0935-8646f06ba2bd"),
-                            Gender = 1,
-                            InstituteId = new Guid("6fb600c1-9011-4fd7-9234-881379716440"),
-                            TeacherName = "任瀚宇",
-                            TeacherNo = "1",
-                            TeacherNum = 200001L
                         });
                 });
 

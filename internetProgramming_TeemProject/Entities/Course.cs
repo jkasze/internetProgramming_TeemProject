@@ -26,7 +26,7 @@ namespace internetProgramming_TeemProject.Entities
         //关联外部表
         public ICollection<Courseware> Coursewares { get; set; }
         public ICollection<HomeWork> HomeWorks { get; set; }
-        public ICollection<Experiment>?  Experiments { get; set; }
+        public ICollection<Experiment> Experiments { get; set; }
 
 
         public ICollection<Enrollment> Enrollments{ get; set; }

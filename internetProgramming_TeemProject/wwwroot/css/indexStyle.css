@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: rgb(0,97,143);
+  background-color: #1c4f82;
   font-family: 'Lato', sans-serif;
   display: flex;
   flex-direction: column;
@@ -21,14 +21,18 @@ body {
 }
 
 header {
-  background-color: rgb(0,97,143);
+  background-color:#1c4f82;
   color: #fff;
   font-size: 130%;
   position: relative;
   padding: 15px 15px;
   text-align: center;
 }
-
+header *{
+  vertical-align: middle;
+  font-size: 50px;
+  font-weight: bold;
+}
 header h1 {
   margin: 0;
 }
@@ -38,10 +42,11 @@ header p {
 }
 
 button,input[type='submit'] {
-  background-color: var(--secondary-color);
+  background-color:#296ca8;
   border: 0;
   border-radius: 5px;
   color: #fff;
+  font-size: 20px;
   cursor: pointer;
   padding: 8px 12px;
 }
@@ -94,7 +99,7 @@ button:focus {
 
 .modal-header h3 {
   margin: 0;
-  border-bottom: 1px solid #333;
+
 }
 
 .modal-content {
@@ -143,6 +148,7 @@ button:focus {
   width: 100%;
   padding: 12px;
   font-size: 16px;
+  border-radius: 15px;
 }
 
 .post {

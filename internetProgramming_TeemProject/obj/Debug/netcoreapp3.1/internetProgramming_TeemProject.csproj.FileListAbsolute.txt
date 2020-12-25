@@ -196,3 +196,5 @@ C:\Users\26924\Source\Repos\jkasze\internetProgramming_TeemProject\internetProgr
 C:\Users\26924\Source\Repos\jkasze\internetProgramming_TeemProject\internetProgramming_TeemProject\obj\Debug\netcoreapp3.1\internetProgramming_TeemProject.dll
 C:\Users\26924\Source\Repos\jkasze\internetProgramming_TeemProject\internetProgramming_TeemProject\obj\Debug\netcoreapp3.1\internetProgramming_TeemProject.pdb
 C:\Users\26924\Source\Repos\jkasze\internetProgramming_TeemProject\internetProgramming_TeemProject\obj\Debug\netcoreapp3.1\internetProgramming_TeemProject.genruntimeconfig.cache
+C:\code\it\internetProgramming_TeemProject\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\code\it\internetProgramming_TeemProject\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

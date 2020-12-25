@@ -1,23 +1,36 @@
 #### internetProgramming
 
-with javascript and dotnet core
+with javascript and dotnet core 3.1
 
 
 
-2020/12/13
+# Restful接口目录
 
-实现以下功能：
+###### 非权限API
 
-1.前台登录框（不含验证）
+GET api/institute 用于获得学院列表
 
-2.前台获取学院列表（不含后台API）
+GET api/institute/{instituteId} 用于获得某一学院信息
+
+GET api/institute/{instituteId}/teacher 用于获得某一学院所有老师的列表
+
+GET api/institute/{instituteId}/teacher/{teacherId} 用于获得某一老师的信息
+
+GET api/course?q=工号或Guid 用于获得某一老师的开课信息（未实现）
+
+###### 教务API
+
+GET api/allteacherNum 用于获得教师账号列表
+
+POST api/institute/ 参数为num,name,informtation 用于增加一个学院
+
+PATCH api/
+
+POST api/
+
+PATCH api/
 
 
 
-2020/12/18
 
-实现以下功能：
 
-1.获取学院列表(后台API)
-
-2.sqlite数据库支持

@@ -16,7 +16,7 @@ close.addEventListener('click', () => modal.classList.remove('show-modal'));
 //用API获取学院数据
 async function getPosts() {
     const res = await fetch(
-        `https://localhost:44397/api/Institute`
+        `https://localhost:44397/api/institute`
     );
 
     const data = await res.json();

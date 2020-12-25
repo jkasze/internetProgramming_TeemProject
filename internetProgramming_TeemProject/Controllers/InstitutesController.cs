@@ -34,7 +34,7 @@ namespace internetProgramming_TeemProject.Controllers
             return Ok(instituteDtos);  //OK() 返回状态码200
         }
 
-        [HttpGet("{instituteId}")]  //还可用 [Route("{companyId}")]
+        [HttpGet("{instituteId}", Name = nameof(GetInstitute))]  //还可用 [Route("{companyId}")]
         public async Task<ActionResult<InstituteDto>> GetInstitute(Guid instituteId)
         {
              var institute = await _instituteRepository.GetInstituteAsync(instituteId);
@@ -43,6 +43,17 @@ namespace internetProgramming_TeemProject.Controllers
                 return NotFound();  //返回状态码404
             }
             return Ok(_mapper.Map<InstituteDto>(institute));
+        }
+        [HttpPost]
+        public async Task<ActionResult<InstituteDto>> CreateInstitute(InstituteAddDto institute)
+        {
+            var entity = _mapper.Map<Institute>(institute);
+            _instituteRepository.AddInstitute(entity);
+            await _instituteRepository.SaveAsync();
+
+            var returnDto = _mapper.Map<InstituteDto>(entity);
+
+            return CreatedAtRoute(nameof(GetInstitute),  new { instituteId = returnDto.Id }, returnDto);
         }
 
     }

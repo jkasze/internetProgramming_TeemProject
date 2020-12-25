@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace internetProgramming_TeemProject.Models
 {
-    public class InstituteDto
+    public class InstituteAddDto
     {
-        public Guid Id { get; set; }
         public string Num { get; set; }
         public string Name { get; set; }
         public string Introduction { get; set; }

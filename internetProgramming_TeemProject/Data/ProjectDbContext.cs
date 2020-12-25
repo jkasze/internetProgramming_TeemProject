@@ -29,6 +29,7 @@ namespace internetProgramming_TeemProject.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Institute>().Property(x => x.Name).IsRequired().HasMaxLength(100);
+            modelBuilder.Entity<Institute>().Property(x => x.Num).IsRequired().HasMaxLength(3);
             modelBuilder.Entity<Institute>().Property(x => x.Introduction).HasMaxLength(500);
             modelBuilder.Entity<Teacher>().Property(x => x.TeacherNo).IsRequired().HasMaxLength(10);
             modelBuilder.Entity<Teacher>().Property(x => x.TeacherName).IsRequired().HasMaxLength(50);
@@ -42,18 +43,21 @@ namespace internetProgramming_TeemProject.Data
                 new Institute
                 {
                     Id = Guid.Parse("bbdee09c-089b-4d30-bece-44df5923716c"),
+                    Num = "01",
                     Name = "信息学院",
                     Introduction = "西北大学信息科学与技术学院成立于2005年5月，是由前计算机科学系和电子科学系为主体整合而成。"
                 },
                 new Institute
                 {
                     Id = Guid.Parse("6fb600c1-9011-4fd7-9234-881379716440"),
+                    Num = "02",
                     Name = "法学院",
                     Introduction = "西北大学法学教育始于1907年的陕西法政学堂，是中国现代法学教育中历史最为悠久的学校之一。"
                 },
                 new Institute
                 {
                     Id = Guid.Parse("5efc910b-2f45-43df-afee-620d40542853"),
+                    Num = "03",
                     Name = "历史学院",
                     Introduction = "西北大学历史学院其前身西北大学文博学院（1988年设立）源自于1937年设立的西北联合大学历史系，许寿裳任系主任。"
                 });

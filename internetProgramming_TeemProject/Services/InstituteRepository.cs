@@ -24,10 +24,14 @@ namespace internetProgramming_TeemProject.Services
                 throw new ArgumentNullException(nameof(institute));
             }
             institute.Id = Guid.NewGuid();
-            foreach (var teacher in institute.Teachers)
+            if(institute.Teachers != null)
             {
-                teacher.Id = Guid.NewGuid();
+                foreach (var teacher in institute.Teachers)
+                {
+                    teacher.Id = Guid.NewGuid();
+                }
             }
+            
 
             _context.Institutes.Add(institute);
         }
@@ -38,6 +42,7 @@ namespace internetProgramming_TeemProject.Services
             {
                 throw new ArgumentNullException(nameof(instituteId));
             }
+
             if (teacher == null)
             {
                 throw new ArgumentNullException(nameof(teacher));

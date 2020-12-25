@@ -12,6 +12,8 @@ namespace internetProgramming_TeemProject.Profiles
         public InstituteProfile()
         {
             CreateMap<Institute, InstituteDto>();
+            CreateMap<InstituteAddDto, Institute>();
         }
+
     }
 }

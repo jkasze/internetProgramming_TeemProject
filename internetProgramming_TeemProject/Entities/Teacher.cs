@@ -20,10 +20,8 @@ namespace internetProgramming_TeemProject.Entities
         public long TeacherNum { get; set; }
         public string TeacherNo { get; set; }
         public string TeacherName { get; set; }
+        public string Introduction { get; set; }
         public Gender Gender { get; set; }
         public Institute Institute { get; set; }
-        
-
-        public ICollection<Teach> Teaches { get; set; }
     }
 }

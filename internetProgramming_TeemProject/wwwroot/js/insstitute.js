@@ -3,20 +3,20 @@ const institutes = document.getElementById("institutes");
 //获取所有学院的集合
 const instituteList = document.getElementsByClassName("institute");
 
-const url  = '';
+const url = 'https://localhost:44397/api/institute';
 
 //从后台获取学院介绍信息
-function getInsitute(){
-    let Response =  fetch(url);
-    let data = Response.json();
+async function getInsitute() {
+    const res = await fetch(url);
+    const data = await res.json();
+
     return data;
 }
 
 //展示学院及其介绍
-function displayInstitute(data){
-    let item;
-    for(let i = 0; i < data.length; i++){
-        item = data[i];
+async function displayInstitute(){
+    let data =await getInsitute();
+    data.forEach(item => {
         let institute = document.createElement("div");
         institute.classList.add("institute");
         institute.id = item.id;
@@ -33,10 +33,10 @@ function displayInstitute(data){
             institute.lastElementChild.style.display = 'none';
         })
         institutes.appendChild(institute);
-    }
+    });
 }
 
-displayInstitute(getInsitute());
+displayInstitute();
 /*
 test = {
     data : [

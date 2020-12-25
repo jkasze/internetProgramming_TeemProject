@@ -2,7 +2,7 @@ const form = document.getElementById("form");
 const userid = document.getElementById("userid");
 const password = document.getElementById("password");
 const identity =  document.getElementsByName("identity");
-const button = document.getElementById("register");
+const buttonInstitute = document.getElementById("institute");
 
 
 const uri = "";
@@ -69,6 +69,6 @@ function check(id, pwd){
 }
 
 //跳转到注册页面
-button.addEventListener("click",(Event)=>{
-    window.location.href = "register.html";
+buttonInstitute.addEventListener("click",(Event)=>{
+    window.location.href = "institute.html";
 })

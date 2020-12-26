@@ -9,8 +9,8 @@ using internetProgramming_TeemProject.Data;
 namespace internetProgramming_TeemProject.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    [Migration("20201225160420_institute")]
-    partial class institute
+    [Migration("20201226070214_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -260,23 +260,15 @@ namespace internetProgramming_TeemProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Gender")
-                        .HasColumnType("INTEGER");
-
                     b.Property<Guid>("InstituteId")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Introduction")
+                    b.Property<string>("TeacherIntroduction")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TeacherName")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("TeacherNo")
-                        .IsRequired()
-                        .HasMaxLength(10)
                         .HasColumnType("TEXT");
 
                     b.Property<long>("TeacherNum")
@@ -292,55 +284,48 @@ namespace internetProgramming_TeemProject.Migrations
                         new
                         {
                             Id = new Guid("ca268a19-0f39-4d8b-b8d6-5bace54f8027"),
-                            Gender = 1,
                             InstituteId = new Guid("bbdee09c-089b-4d30-bece-44df5923716c"),
+                            TeacherIntroduction = "",
                             TeacherName = "何路",
-                            TeacherNo = "1",
                             TeacherNum = 201401L
                         },
                         new
                         {
                             Id = new Guid("7346d7ba-d17c-9014-05ae-fb0169ed0a13"),
-                            Gender = 2,
                             InstituteId = new Guid("bbdee09c-089b-4d30-bece-44df5923716c"),
+                            TeacherIntroduction = "",
                             TeacherName = "耿国华",
-                            TeacherNo = "2",
                             TeacherNum = 201402L
                         },
                         new
                         {
                             Id = new Guid("494710f6-6202-fbe9-d827-1dafde50daa2"),
-                            Gender = 2,
                             InstituteId = new Guid("bbdee09c-089b-4d30-bece-44df5923716c"),
                             TeacherName = "徐彩霞",
-                            TeacherNo = "3",
                             TeacherNum = 201403L
                         },
                         new
                         {
                             Id = new Guid("47b70abc-98b8-4fdc-b9fa-5dd6716f6e6b"),
-                            Gender = 1,
                             InstituteId = new Guid("5efc910b-2f45-43df-afee-620d40542853"),
+                            TeacherIntroduction = "",
                             TeacherName = "王豪",
-                            TeacherNo = "1",
                             TeacherNum = 201501L
                         },
                         new
                         {
                             Id = new Guid("5d27fb1c-f235-e1ce-fe63-ae6e664a27fa"),
-                            Gender = 1,
                             InstituteId = new Guid("5efc910b-2f45-43df-afee-620d40542853"),
+                            TeacherIntroduction = "",
                             TeacherName = "郭孟源",
-                            TeacherNo = "2",
                             TeacherNum = 201502L
                         },
                         new
                         {
                             Id = new Guid("2ea277d6-50cc-025e-0935-8646f06ba2bd"),
-                            Gender = 1,
                             InstituteId = new Guid("6fb600c1-9011-4fd7-9234-881379716440"),
+                            TeacherIntroduction = "",
                             TeacherName = "任瀚宇",
-                            TeacherNo = "1",
                             TeacherNum = 200001L
                         });
                 });

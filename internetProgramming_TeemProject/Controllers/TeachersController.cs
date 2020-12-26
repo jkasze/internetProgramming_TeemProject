@@ -39,7 +39,7 @@ namespace internetProgramming_TeemProject.Controllers
             return Ok(teacherDtos);
         }
 
-        [HttpGet("{teacherId}")]  //还可用 [Route("{companyId}")]
+        [HttpGet("{teacherId}", Name = nameof(GetTeacherForInstitute))]  //还可用 [Route("{companyId}")]
         public async Task<ActionResult<TeacherDto>>
             GetTeacherForInstitute(Guid teacherId, Guid instituteId)
         {
@@ -55,6 +55,27 @@ namespace internetProgramming_TeemProject.Controllers
             var teacherDto = _mapper.Map<TeacherDto>(teacher);
 
             return Ok(teacherDto);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<TeacherDto>>
+            CreateTeacherForInstitute(Guid instituteId, TeacherAddDto teacher)
+        {
+            if(!await _instituteRepository.InstituteExistsAsync(instituteId))
+            {
+                return NotFound();
+            }
+            var entity = _mapper.Map<Teacher>(teacher);
+            _instituteRepository.AddTeacher(instituteId, entity);
+            await _instituteRepository.SaveAsync();
+
+            var dtoToReturn = _mapper.Map<TeacherDto>(entity);
+
+            return CreatedAtRoute(nameof(GetTeacherForInstitute),new {
+                    instituteId,
+                    teacherId = dtoToReturn.Id
+                },dtoToReturn);
+
         }
     }
 }

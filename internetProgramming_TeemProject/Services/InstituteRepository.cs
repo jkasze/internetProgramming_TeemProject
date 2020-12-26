@@ -130,7 +130,7 @@ namespace internetProgramming_TeemProject.Services
 
             return await _context.Teachers
                 .Where(x => x.InstituteId == instituteId)
-                .OrderBy(x => x.TeacherNo)
+                .OrderBy(x => x.TeacherNum)
                 .ToListAsync();
         }
 

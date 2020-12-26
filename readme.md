@@ -26,7 +26,7 @@ POST api/institute/ 参数为num,name,informtation 用于增加一个学院
 
 PATCH api/
 
-POST api/
+POST api/institute/{instituteId}/teacher/ 参数为teacherNum,teacherName,teacherIntroductionIntroduction 用于增加某个学院下的老师
 
 PATCH api/
 

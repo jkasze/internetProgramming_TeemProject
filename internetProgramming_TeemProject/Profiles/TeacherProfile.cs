@@ -13,6 +13,7 @@ namespace internetProgramming_TeemProject.Profiles
         public TeacherProfile()
         {
             CreateMap<Teacher, TeacherDto>();
+            CreateMap<TeacherAddDto, Teacher>();
         }
     }
 }

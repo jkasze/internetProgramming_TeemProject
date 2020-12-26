@@ -1,11 +1,63 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>学生首页</title>
+    <link href="css/student.css" rel="stylesheet" />
+    <style type="text/css">
+        .auto-style1 {
+            width: 420px;
+        }
+    </style>
 </head>
 <body>
-    student
+    <div class="content">
+
+        <div class="main_box">
+            <table class="stuIfo">
+                <tr>
+                    <th colspan="4">在校学习成绩</th>
+                </tr>
+                <tr>
+                    <td>学号: <span runat="server" ID="SpanStudentNumber"></span></td>
+                    <td class="auto-style1">姓名: <span runat="server" ID="SpanName"></span></td>
+                    <td>
+                        学院: <span runat="server" ID="SpanDepartment"></span>
+                    </td>
+
+                </tr>
+            </table>
+            <div class="gradeData">
+                <table class="dataList">
+                    <tr>
+                        <th>课件列表</th>
+                        <th>实验列表</th>
+                        <th>作业列表</th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <%= thiscourse[0] %>
+                        </td>
+                        <td><%= thiscourse[1] %></td>
+                        <td><%= thiscourse[2] %></td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <br/><br/><br/><br/>
+    <div style="text-align: center">
+        <form action="#">
+            <input type="file" onchange="getFileContent()" id="fileInput"/>
+            <input type="submit" value="提交" />
+        </form><br><br><br>
+        <input type="button" value="查询成绩" />
+        <br/><br>
+        <a href="changpwd.html">修改密码</a>
+    </div>
+    <script src="js/student.js"></script>
 </body>
 </html>

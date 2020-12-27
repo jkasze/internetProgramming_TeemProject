@@ -19,5 +19,6 @@ namespace internetProgramming_TeemProject.Entities
         public string TeacherName { get; set; }
         public string TeacherIntroduction { get; set; }
         public Institute Institute { get; set; }
+        public Course Course { get; set; }
     }
 }

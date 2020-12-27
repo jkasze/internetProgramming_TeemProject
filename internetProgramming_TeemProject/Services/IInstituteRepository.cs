@@ -21,5 +21,11 @@ namespace internetProgramming_TeemProject.Services
         void UpdateTeacher(Teacher teacher);
         void DeleteTeacher(Teacher teacher);
         Task<bool> SaveAsync();
+
+        Task<IEnumerable<Student>> GetStudentsAsync(Guid instituteId);
+        Task<Student> GetStudentAsync(Guid instituteId, Guid teacherId);
+        void AddStudent(Guid instituteId, Student student);
+        void UpdateStudent(Student student);
+        void DeleteStudent(Student student);
     }
 }

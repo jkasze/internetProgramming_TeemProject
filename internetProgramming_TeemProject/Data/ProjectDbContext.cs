@@ -20,15 +20,10 @@ namespace internetProgramming_TeemProject.Data
         public DbSet<Course> Courses { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Account> Accounts { get; set; }
-        public DbSet<Courseware> Coursewares { get; set; }
-        public DbSet<Enrollment> Enrollments { get; set; }
-        public DbSet<Experiment> Experiments { get; set; }
-        public DbSet<HomeWork> HomeWorks { get; set; }
-        public DbSet<Teach> Teaches { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Institute>().Property(x => x.Name).IsRequired().HasMaxLength(100);
+            modelBuilder.Entity<Institute>().Property(x => x.Name).IsRequired().HasMaxLength(4);
             modelBuilder.Entity<Institute>().Property(x => x.Num).IsRequired().HasMaxLength(3);
             modelBuilder.Entity<Institute>().Property(x => x.Introduction).HasMaxLength(500);
             modelBuilder.Entity<Teacher>().Property(x => x.TeacherName).IsRequired().HasMaxLength(50); 
@@ -37,7 +32,14 @@ namespace internetProgramming_TeemProject.Data
                 .WithMany(x => x.Teachers)
                 .HasForeignKey(x => x.InstituteId)
                 .OnDelete(DeleteBehavior.Restrict);
-
+            modelBuilder.Entity<Student>().Property(x => x.StudentName).IsRequired().HasMaxLength(4);
+            modelBuilder.Entity<Student>().Property(x => x.StudentNum).IsRequired().HasMaxLength(8);
+            modelBuilder.Entity<Student>()
+                .HasOne(x => x.Institute)
+                .WithMany(x => x.Students)
+                .HasForeignKey(x => x.InstituteId)
+                .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Course>().Property(x => x.CourseName).IsRequired().HasMaxLength(12);
             modelBuilder.Entity<Institute>().HasData(
                 new Institute
                 {
@@ -107,6 +109,15 @@ namespace internetProgramming_TeemProject.Data
                     TeacherNum = 200001,
                     TeacherIntroduction = "",
                     TeacherName = "任瀚宇",
+                }
+            );
+            modelBuilder.Entity<Student>().HasData(
+                new Student
+                {
+                    Id = Guid.Parse("ffa9e244-2743-43b4-8d62-b162700b78d7"),
+                    InstituteId = Guid.Parse("5efc910b-2f45-43df-afee-620d40542853"),
+                    StudentNum = 20180101,
+                    StudentName = "封不觉",
                 }
             );
         }

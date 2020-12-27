@@ -13,5 +13,6 @@ namespace internetProgramming_TeemProject.Entities
         public string Name { get; set; }
         public string Introduction { get; set; }
         public ICollection<Teacher> Teachers { get; set; }
+        public ICollection<Student> Students { get; set; }
     }
 }

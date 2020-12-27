@@ -13,23 +13,31 @@ namespace internetProgramming_TeemProject.Entities
     public class Course
     {
         public Guid CourseId { get; set; }
+        //基本信息
         public string CourseName { get; set; }
-
-        //具体的日期
         public DateTime StartTime { get; set; }
         public CourseTime CourseTime { get; set; }
+        public int theoryPeriod { get; set; }
+        public int labPeriod { get; set; }
         public string Information { get; set; }
+        //拓展信息
+        //课件
+        public string pptNmae { get; set; }
 
-        //该课程是否有实验课
-        public bool HasExperiment { get; set; }
+        //实验
+        public string labName { get;set;}
+        public string labStep { get; set; }
 
-        //关联外部表
-        public ICollection<Courseware> Coursewares { get; set; }
-        public ICollection<HomeWork> HomeWorks { get; set; }
-        public ICollection<Experiment> Experiments { get; set; }
+        public string refDocment { get; set; }
+        public DateTime lastSubmit { get; set; }
+        //作业
+        public int exTimes { get; set; }
+        public string exName { get; set; }
+        public string exInfor { get; set; }
+        public DateTime exStrat { get; set; }
+        public DateTime exSubmit { get; set; }
 
-
-        public ICollection<Enrollment> Enrollments{ get; set; }
-        public ICollection <Teach> Teaches { get; set; }
+        public ICollection<Teacher> Teachers { get; set; }
+        public ICollection<Student> Students { get; set; }
     }
 }

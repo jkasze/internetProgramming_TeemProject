@@ -150,5 +150,52 @@ namespace internetProgramming_TeemProject.Services
         {
             return await _context.SaveChangesAsync() >= 0;
         }
+
+        public async Task<IEnumerable<Student>> GetStudentsAsync(Guid instituteId)
+        {
+            if(instituteId == Guid.Empty)
+            {
+                throw new ArgumentNullException(nameof(instituteId));
+            }
+            return await _context.Students
+                .Where(x => x.InstituteId == instituteId)
+                .OrderBy(x => x.StudentNum).ToListAsync();
+        }
+
+        public async Task<Student>GetStudentAsync(Guid instituteId, Guid studentId)
+        {
+            if(instituteId == Guid.Empty)
+            {
+                throw new ArgumentNullException(nameof(instituteId));
+            }
+            if(studentId == Guid.Empty)
+            {
+                throw new ArgumentNullException(nameof(Student));
+            }
+            return await _context.Students
+                .Where(x => x.InstituteId == instituteId && x.Id == studentId).FirstOrDefaultAsync();
+        }
+
+        public void AddStudent(Guid instituteId, Student student)
+        {
+            if(instituteId == Guid.Empty)
+            {
+                throw new ArgumentNullException(nameof(instituteId));
+            }
+            if(student == null)
+            {
+                throw new ArgumentNullException(nameof(student));
+            }
+            student.InstituteId = instituteId;
+            _context.Students.Add(student);
+        }
+        public void UpdateStudent(Student student)
+        {
+
+        }
+        public void DeleteStudent(Student student)
+        {
+            _context.Students.Remove(student);
+        }
     }
 }

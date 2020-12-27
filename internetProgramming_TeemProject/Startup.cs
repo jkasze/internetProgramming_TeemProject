@@ -11,6 +11,7 @@ using internetProgramming_TeemProject.Entities;
 using internetProgramming_TeemProject.Models;
 using AutoMapper;
 using System;
+using Newtonsoft.Json.Serialization;
 
 namespace internetProgramming_TeemProject
 {
@@ -26,8 +27,11 @@ namespace internetProgramming_TeemProject
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddDbContext<InstituteContext>(opt =>
-                //opt.UseInMemoryDatabase("InstituteList"));
-            services.AddControllers();
+            //opt.UseInMemoryDatabase("InstituteList"));
+            services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IInstituteRepository, InstituteRepository>();
             services.AddDbContext<ProjectDbContext>(options =>

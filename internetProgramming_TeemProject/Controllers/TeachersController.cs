@@ -8,12 +8,13 @@ using internetProgramming_TeemProject.Data;
 using internetProgramming_TeemProject.Services;
 using internetProgramming_TeemProject.Entities;
 using internetProgramming_TeemProject.Models;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace internetProgramming_TeemProject.Controllers
 {
     [ApiController]
     [Route("api/institute/{instituteId}/teacher")]
-    public class TeachersController :ControllerBase
+    public class TeachersController : ControllerBase
     {
         private readonly IMapper _mapper;
         private readonly IInstituteRepository _instituteRepository;
@@ -28,7 +29,7 @@ namespace internetProgramming_TeemProject.Controllers
         public async Task<ActionResult<TeacherDto>>
             GetTeachersForInstitute(Guid instituteId)
         {
-            if(! await _instituteRepository.InstituteExistsAsync(instituteId))
+            if (!await _instituteRepository.InstituteExistsAsync(instituteId))
             {
                 return NotFound();
             }
@@ -61,7 +62,7 @@ namespace internetProgramming_TeemProject.Controllers
         public async Task<ActionResult<TeacherDto>>
             CreateTeacherForInstitute(Guid instituteId, TeacherAddDto teacher)
         {
-            if(!await _instituteRepository.InstituteExistsAsync(instituteId))
+            if (!await _instituteRepository.InstituteExistsAsync(instituteId))
             {
                 return NotFound();
             }
@@ -71,11 +72,42 @@ namespace internetProgramming_TeemProject.Controllers
 
             var dtoToReturn = _mapper.Map<TeacherDto>(entity);
 
-            return CreatedAtRoute(nameof(GetTeacherForInstitute),new {
-                    instituteId,
-                    teacherId = dtoToReturn.Id
-                },dtoToReturn);
+            return CreatedAtRoute(nameof(GetTeacherForInstitute), new {
+                instituteId,
+                teacherId = dtoToReturn.Id
+            }, dtoToReturn);
+        }
 
+        [HttpPatch("{teacherId}")]
+        public async Task<IActionResult>PartiallyUpdateTeacherForInstitute(
+            Guid instituteId, 
+            Guid teacherId, 
+            JsonPatchDocument<TeacherUpdateDto>patchDocument)
+        {
+            if(!await _instituteRepository.InstituteExistsAsync(instituteId))
+            {
+                return NotFound();
+            }
+            var teacherEntity = await _instituteRepository.GetTeacherAsync(instituteId, teacherId);
+
+            if(teacherEntity == null)
+            {
+                return  NotFound();
+            }
+
+            var dtoToPatch = _mapper.Map<TeacherUpdateDto>(teacherEntity);
+            //entity 转化为 updateDto
+            //把传进来的teacher的值更新到updateDto
+            //把updateDto映射回entity
+
+            //需要处理验证错误
+            patchDocument.ApplyTo(dtoToPatch);
+
+            _mapper.Map(dtoToPatch, teacherEntity);
+            _instituteRepository.UpdateTeacher(teacherEntity);
+            await _instituteRepository.SaveAsync();
+
+            return NoContent();
         }
     }
 }

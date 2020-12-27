@@ -17,7 +17,7 @@ namespace internetProgramming_TeemProject.Data
         }
         public DbSet<Institute> Institutes { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
-        public DbSet<Course> Courses { get; set; }
+        //public DbSet<Course> Courses { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Account> Accounts { get; set; }
 
@@ -39,7 +39,7 @@ namespace internetProgramming_TeemProject.Data
                 .WithMany(x => x.Students)
                 .HasForeignKey(x => x.InstituteId)
                 .OnDelete(DeleteBehavior.Restrict);
-            modelBuilder.Entity<Course>().Property(x => x.CourseName).IsRequired().HasMaxLength(12);
+            //modelBuilder.Entity<Course>().Property(x => x.CourseName).IsRequired().HasMaxLength(12);
             modelBuilder.Entity<Institute>().HasData(
                 new Institute
                 {

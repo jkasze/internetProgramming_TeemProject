@@ -14,6 +14,8 @@ namespace internetProgramming_TeemProject.Profiles
         {
             CreateMap<Teacher, TeacherDto>();
             CreateMap<TeacherAddDto, Teacher>();
+            CreateMap<Teacher, TeacherUpdateDto>();
+            CreateMap<TeacherUpdateDto, Teacher>();
         }
     }
 }

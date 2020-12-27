@@ -5,11 +5,6 @@ using System.Threading.Tasks;
 
 namespace internetProgramming_TeemProject.Entities
 {
-    public enum Gender
-    {
-        男 = 1,
-        女 = 2
-    }
     //教师
     public class Teacher
     {
@@ -19,6 +14,6 @@ namespace internetProgramming_TeemProject.Entities
         public string TeacherName { get; set; }
         public string TeacherIntroduction { get; set; }
         public Institute Institute { get; set; }
-        public Course Course { get; set; }
+        //public Course Course { get; set; }
     }
 }

@@ -13,6 +13,6 @@ namespace internetProgramming_TeemProject.Models
         public Guid InstituteId { get; set; }
         public long TeacherNum { get; set; }
         public string TeacherName { get; set; }
-        public string TeacherIntroductionIntroduction { get; set; }
+        public string TeacherIntroduction { get; set; }
     }
 }

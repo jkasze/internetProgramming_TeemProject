@@ -13,7 +13,7 @@ namespace internetProgramming_TeemProject.Entities
         public long StudentNum { get; set; }
         public string StudentName { get; set; }
         public Institute Institute { get; set; }
-        public Course Course{ get; set; }
+        //public Course Course{ get; set; }
     }
 
 }

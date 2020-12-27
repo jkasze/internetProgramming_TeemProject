@@ -10,7 +10,7 @@ namespace internetProgramming_TeemProject.Entities
     {
         FirstSemester, SecondSemester,TheFirstHalfFirstSemester, TheSecondHalfFirstSemester, TheFirstHalfSecondSemester, TheSecondHalfSecondSemester
     }
-    public class Course
+    /*public class Course
     {
         public Guid CourseId { get; set; }
         //基本信息
@@ -39,5 +39,5 @@ namespace internetProgramming_TeemProject.Entities
 
         public ICollection<Teacher> Teachers { get; set; }
         public ICollection<Student> Students { get; set; }
-    }
+    }*/
 }

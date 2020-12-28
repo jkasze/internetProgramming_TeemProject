@@ -1,10 +1,33 @@
-
-body{
-    background-color: #f9fafb;
-    font-family: 'Open Sans', sans-serif;
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
+body {
+    background-color: #1c4f82;
 }
+h2{
+    color: white;
+}
+p{
+    color: white;
+}
+#institutes{
+    padding: 0;
+    border-color: black;
+    margin-left: 27%;
+    border: black solid 5px;
+    display:block;
+    position: absolute;
+}
+.institute{
+    border: black solid 3px;
 
+}
+.teacherNum{
+    border: black solid 1px;
+}
+.teacherName{
+    border: black solid 1px;
+}
+.introduction{
+    padding: 0;
+    margin-top: 0;
+    border-bottom: yellow solid 3px;
+    background-color: midnightblue;
+}

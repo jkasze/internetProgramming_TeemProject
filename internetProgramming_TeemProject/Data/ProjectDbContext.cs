@@ -26,7 +26,7 @@ namespace internetProgramming_TeemProject.Data
             modelBuilder.Entity<Institute>().Property(x => x.Name).IsRequired().HasMaxLength(4);
             modelBuilder.Entity<Institute>().Property(x => x.Num).IsRequired().HasMaxLength(3);
             modelBuilder.Entity<Institute>().Property(x => x.Introduction).HasMaxLength(500);
-            modelBuilder.Entity<Teacher>().Property(x => x.TeacherName).IsRequired().HasMaxLength(50); 
+            modelBuilder.Entity<Teacher>().Property(x => x.TeacherName).IsRequired().HasMaxLength(4); 
             modelBuilder.Entity<Teacher>()
                 .HasOne(x => x.Institute)
                 .WithMany(x => x.Teachers)
@@ -118,6 +118,20 @@ namespace internetProgramming_TeemProject.Data
                     InstituteId = Guid.Parse("5efc910b-2f45-43df-afee-620d40542853"),
                     StudentNum = 20180101,
                     StudentName = "封不觉",
+                },
+                new Student
+                {
+                    Id = Guid.Parse("e48f8f2f-22d6-cb6e-cdc2-4c92a09fdfcd"),
+                    InstituteId = Guid.Parse("5efc910b-2f45-43df-afee-620d40542853"),
+                    StudentNum = 20180102,
+                    StudentName = "封不",
+                },
+                new Student
+                {
+                    Id = Guid.Parse("9011e45a-a408-bb72-50eb-d5ee66875dd3"),
+                    InstituteId = Guid.Parse("5efc910b-2f45-43df-afee-620d40542853"),
+                    StudentNum = 20180103,
+                    StudentName = "封觉",
                 }
             );
         }

@@ -32,137 +32,6 @@ namespace internetProgramming_TeemProject.Migrations
                     b.ToTable("Accounts");
                 });
 
-            modelBuilder.Entity("internetProgramming_TeemProject.Entities.Course", b =>
-                {
-                    b.Property<Guid>("CourseId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("CourseName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("CourseTime")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("HasExperiment")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Information")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("CourseId");
-
-                    b.ToTable("Courses");
-                });
-
-            modelBuilder.Entity("internetProgramming_TeemProject.Entities.Courseware", b =>
-                {
-                    b.Property<Guid>("CoursewareId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("CourseId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("CoursewareName")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("CoursewareId");
-
-                    b.HasIndex("CourseId");
-
-                    b.ToTable("Coursewares");
-                });
-
-            modelBuilder.Entity("internetProgramming_TeemProject.Entities.Enrollment", b =>
-                {
-                    b.Property<Guid>("EnrollmentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("CourseId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("Grade")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("StudentId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("StudentId1")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("EnrollmentId");
-
-                    b.HasIndex("CourseId");
-
-                    b.HasIndex("StudentId1");
-
-                    b.ToTable("Enrollments");
-                });
-
-            modelBuilder.Entity("internetProgramming_TeemProject.Entities.Experiment", b =>
-                {
-                    b.Property<Guid>("ExperimentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("CourseId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("LastTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Purpose")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Resource")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Steps")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ExperimentId");
-
-                    b.HasIndex("CourseId");
-
-                    b.ToTable("Experiments");
-                });
-
-            modelBuilder.Entity("internetProgramming_TeemProject.Entities.HomeWork", b =>
-                {
-                    b.Property<Guid>("HomeWorkId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("CourseId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("HomeWorkName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("HomeWorkId");
-
-                    b.HasIndex("CourseId");
-
-                    b.ToTable("HomeWorks");
-                });
-
             modelBuilder.Entity("internetProgramming_TeemProject.Entities.Institute", b =>
                 {
                     b.Property<Guid>("Id")
@@ -225,7 +94,7 @@ namespace internetProgramming_TeemProject.Migrations
                         .HasMaxLength(4)
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("StudentNum")
+                    b.Property<int>("StudentNum")
                         .HasMaxLength(8)
                         .HasColumnType("INTEGER");
 
@@ -241,29 +110,22 @@ namespace internetProgramming_TeemProject.Migrations
                             Id = new Guid("ffa9e244-2743-43b4-8d62-b162700b78d7"),
                             InstituteId = new Guid("5efc910b-2f45-43df-afee-620d40542853"),
                             StudentName = "封不觉",
-                            StudentNum = 20180101L
+                            StudentNum = 20180101
+                        },
+                        new
+                        {
+                            Id = new Guid("e48f8f2f-22d6-cb6e-cdc2-4c92a09fdfcd"),
+                            InstituteId = new Guid("5efc910b-2f45-43df-afee-620d40542853"),
+                            StudentName = "封不",
+                            StudentNum = 20180102
+                        },
+                        new
+                        {
+                            Id = new Guid("9011e45a-a408-bb72-50eb-d5ee66875dd3"),
+                            InstituteId = new Guid("5efc910b-2f45-43df-afee-620d40542853"),
+                            StudentName = "封觉",
+                            StudentNum = 20180103
                         });
-                });
-
-            modelBuilder.Entity("internetProgramming_TeemProject.Entities.Teach", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("CourseId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("TeacherId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
-
-                    b.HasIndex("TeacherId");
-
-                    b.ToTable("Teaches");
                 });
 
             modelBuilder.Entity("internetProgramming_TeemProject.Entities.Teacher", b =>
@@ -280,7 +142,7 @@ namespace internetProgramming_TeemProject.Migrations
 
                     b.Property<string>("TeacherName")
                         .IsRequired()
-                        .HasMaxLength(50)
+                        .HasMaxLength(4)
                         .HasColumnType("TEXT");
 
                     b.Property<long>("TeacherNum")
@@ -342,50 +204,6 @@ namespace internetProgramming_TeemProject.Migrations
                         });
                 });
 
-            modelBuilder.Entity("internetProgramming_TeemProject.Entities.Courseware", b =>
-                {
-                    b.HasOne("internetProgramming_TeemProject.Entities.Course", null)
-                        .WithMany("Coursewares")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("internetProgramming_TeemProject.Entities.Enrollment", b =>
-                {
-                    b.HasOne("internetProgramming_TeemProject.Entities.Course", "Course")
-                        .WithMany("Enrollments")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("internetProgramming_TeemProject.Entities.Student", "Student")
-                        .WithMany()
-                        .HasForeignKey("StudentId1");
-
-                    b.Navigation("Course");
-
-                    b.Navigation("Student");
-                });
-
-            modelBuilder.Entity("internetProgramming_TeemProject.Entities.Experiment", b =>
-                {
-                    b.HasOne("internetProgramming_TeemProject.Entities.Course", null)
-                        .WithMany("Experiments")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("internetProgramming_TeemProject.Entities.HomeWork", b =>
-                {
-                    b.HasOne("internetProgramming_TeemProject.Entities.Course", null)
-                        .WithMany("HomeWorks")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("internetProgramming_TeemProject.Entities.Student", b =>
                 {
                     b.HasOne("internetProgramming_TeemProject.Entities.Institute", "Institute")
@@ -397,25 +215,6 @@ namespace internetProgramming_TeemProject.Migrations
                     b.Navigation("Institute");
                 });
 
-            modelBuilder.Entity("internetProgramming_TeemProject.Entities.Teach", b =>
-                {
-                    b.HasOne("internetProgramming_TeemProject.Entities.Course", "Course")
-                        .WithMany("Teaches")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("internetProgramming_TeemProject.Entities.Teacher", "Teacher")
-                        .WithMany()
-                        .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Course");
-
-                    b.Navigation("Teacher");
-                });
-
             modelBuilder.Entity("internetProgramming_TeemProject.Entities.Teacher", b =>
                 {
                     b.HasOne("internetProgramming_TeemProject.Entities.Institute", "Institute")
@@ -425,19 +224,6 @@ namespace internetProgramming_TeemProject.Migrations
                         .IsRequired();
 
                     b.Navigation("Institute");
-                });
-
-            modelBuilder.Entity("internetProgramming_TeemProject.Entities.Course", b =>
-                {
-                    b.Navigation("Coursewares");
-
-                    b.Navigation("Enrollments");
-
-                    b.Navigation("Experiments");
-
-                    b.Navigation("HomeWorks");
-
-                    b.Navigation("Teaches");
                 });
 
             modelBuilder.Entity("internetProgramming_TeemProject.Entities.Institute", b =>

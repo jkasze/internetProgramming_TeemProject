@@ -12,8 +12,9 @@ using Microsoft.AspNetCore.JsonPatch;
 
 namespace internetProgramming_TeemProject.Controllers
 {
+    
     [ApiController]
-    [Route("api/institute/{instituteId}/teacher")]
+    [Route("api/institute")] 
     public class TeachersController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -25,7 +26,7 @@ namespace internetProgramming_TeemProject.Controllers
             _instituteRepository = instituteRepository ?? throw new ArgumentNullException(nameof(instituteRepository));
         }
 
-        [HttpGet]
+        [HttpGet("{instituteId}/teacher")]
         public async Task<ActionResult<TeacherDto>>
             GetTeachersForInstitute(Guid instituteId)
         {
@@ -40,7 +41,7 @@ namespace internetProgramming_TeemProject.Controllers
             return Ok(teacherDtos);
         }
 
-        [HttpGet("{teacherId}", Name = nameof(GetTeacherForInstitute))]  //还可用 [Route("{companyId}")]
+        [HttpGet("{instituteId}/teacher/{teacherId}", Name = nameof(GetTeacherForInstitute))]  //还可用 [Route("{companyId}")]
         public async Task<ActionResult<TeacherDto>>
             GetTeacherForInstitute(Guid teacherId, Guid instituteId)
         {
@@ -58,7 +59,7 @@ namespace internetProgramming_TeemProject.Controllers
             return Ok(teacherDto);
         }
 
-        [HttpPost]
+        [HttpPost("{instituteId}/teacher")]
         public async Task<ActionResult<TeacherDto>>
             CreateTeacherForInstitute(Guid instituteId, TeacherAddDto teacher)
         {
@@ -78,7 +79,7 @@ namespace internetProgramming_TeemProject.Controllers
             }, dtoToReturn);
         }
 
-        [HttpPatch("{teacherId}")]
+        [HttpPatch("{instituteId}/teacher/{teacherId}")]
         public async Task<IActionResult>PartiallyUpdateTeacherForInstitute(
             Guid instituteId, 
             Guid teacherId, 
@@ -108,6 +109,43 @@ namespace internetProgramming_TeemProject.Controllers
             await _instituteRepository.SaveAsync();
 
             return NoContent();
+        }
+
+        [HttpDelete("{instituteId}/teacher/{teacherId}")]
+        public async Task<IActionResult>DeleteTeacherForInstitute(Guid instituteId, Guid teacherId)
+        {
+            if(!await _instituteRepository.InstituteExistsAsync(instituteId))
+            {
+                return NotFound();
+            }
+
+            var teacherEntity = await _instituteRepository.GetTeacherAsync(instituteId, teacherId);
+
+            if(teacherEntity == null) 
+            {
+                return NotFound();
+            }
+            _instituteRepository.DeleteTeacher(teacherEntity);
+
+            await _instituteRepository.SaveAsync();
+
+            return NoContent();
+        }
+        [HttpGet("allTeacher")]
+        public async Task<IActionResult> GetAllTeacher()
+        {
+            var teachers = await _instituteRepository.GetAllTeachersAsync();
+
+            var teacherDtos = _mapper.Map<IEnumerable<TeacherDto>>(teachers);
+
+            return Ok(teacherDtos);  //OK() 返回状态码200
+        }
+
+        [HttpOptions]
+        public IActionResult GetStudentsOptions()
+        {
+            Response.Headers.Add("Allowss", "DELETE,GET,PATCH,PUT,OPTIONS");
+            return Ok();
         }
     }
 }

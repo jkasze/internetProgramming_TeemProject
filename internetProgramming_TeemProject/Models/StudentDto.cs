@@ -3,17 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-
-namespace internetProgramming_TeemProject.Entities
+namespace internetProgramming_TeemProject.Models
 {
-    public class Student
+    public class StudentDto
     {
         public Guid Id { get; set; }
         public Guid InstituteId { get; set; }
         public int StudentNum { get; set; }
         public string StudentName { get; set; }
-        public Institute Institute { get; set; }
-        //public Course Course{ get; set; }
     }
-
 }

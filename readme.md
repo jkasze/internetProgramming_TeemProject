@@ -20,13 +20,17 @@ GET api/course?q=工号或Guid 用于获得某一老师的开课信息（未实�
 
 ###### 教务API
 
-GET api/institute/allteacher 用于获得教师账号列表	(未实现)
+GET api/institute/allteacher 用于获得教师账号列表。
 
-POST api/institute/ 参数为num,name,informtation 用于增加一个学院
+POST api/institute/ 参数为num,name,informtation 用于增加一个学院。
 
-PATCH api/
+PATCH api/institute/{instituteId} 用于增加某个学院下的老师，DEMO看下面的。
 
-POST api/institute/{instituteId}/teacher/ 参数为teacherNum,teacherName,teacherIntroductionIntroduction 用于增加某个学院下的老师
+DELETE api/institute/{instituteId} 
+
+POST api/institute/{instituteId}/teacher/ 参数为teacherNum,teacherName,
+
+teacherIntroductionIntroduction 用于增加某个学院下的老师
 
 PATCH api/institute/{instituteId}/teacher/{teacherId} 用于修改某个学院下某个老师的信息。其中op为操作，默认replace即可，path为操作的字段，需要加反斜线/，value为修改后的值。
 
@@ -54,3 +58,20 @@ demo如下：
 }
 ```
 
+DELETE api/institute/{instituteId}/teacher/{teacherId} 用于删除某个学院下某个老师的信息。
+
+POST api/institute/{instituteId}/teacher/ 参数为studentNum,studentName 用于增加某个学院下的学生。
+
+GET api/institute/{instituteId}/student 用于获得某个学院下的学生目录。
+
+GET api/institute/{instituteId}/student/{studentId} 用于获得某个学院下某个学生的信息。
+
+PATCH api/institute/{instituteId}/student/{studentId} 用于修改某个学院下某个学生的信息。其中op为操作，默认replace即可，path为操作的字段，需要加反斜线/，value为修改后的值。
+
+DELETE api/institute/{instituteId}/student/{studentId} 用于删除某个学院下某个学生的信息。
+
+###### 学生API
+
+GET api/student?q=学号  用于通过学号获得学生所有信息。（未实现）
+
+ 

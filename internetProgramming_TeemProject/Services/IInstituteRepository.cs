@@ -9,6 +9,7 @@ namespace internetProgramming_TeemProject.Services
     public interface IInstituteRepository
     {
         Task<IEnumerable<Institute>> GetInstitutesAsync();
+        Task<IEnumerable<Teacher>> GetAllTeachersAsync();
         Task<Institute> GetInstituteAsync(Guid instituteId);
         Task<IEnumerable<Institute>> GetInstitutesAsync(IEnumerable<Guid> instituteIds);
         void AddInstitute(Institute institute);

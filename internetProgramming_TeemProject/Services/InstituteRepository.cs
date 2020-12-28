@@ -74,7 +74,12 @@ namespace internetProgramming_TeemProject.Services
 
         public void DeleteTeacher(Teacher teacher)
         {
-            throw new NotImplementedException();
+            if (teacher == null)
+            { 
+                throw new NotImplementedException(); 
+            }
+
+            _context.Teachers.Remove(teacher);
         }
 
         public async Task<Institute> GetInstituteAsync(Guid instituteId)
@@ -90,6 +95,11 @@ namespace internetProgramming_TeemProject.Services
         public async Task<IEnumerable<Institute>> GetInstitutesAsync()
         {
             return await _context.Institutes.ToListAsync();
+        }
+
+        public async Task<IEnumerable<Teacher>> GetAllTeachersAsync()
+        {
+            return await _context.Teachers.ToListAsync();
         }
 
         public async Task<IEnumerable<Institute>> GetInstitutesAsync(IEnumerable<Guid> instituteIds)
@@ -175,6 +185,7 @@ namespace internetProgramming_TeemProject.Services
             return await _context.Students
                 .Where(x => x.InstituteId == instituteId && x.Id == studentId).FirstOrDefaultAsync();
         }
+
 
         public void AddStudent(Guid instituteId, Student student)
         {

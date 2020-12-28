@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using internetProgramming_TeemProject.Entities;
 using internetProgramming_TeemProject.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
+
 namespace internetProgramming_TeemProject.Controllers
 {
     [ApiController]
@@ -55,7 +57,57 @@ namespace internetProgramming_TeemProject.Controllers
 
             return CreatedAtRoute(nameof(GetInstitute),  new { instituteId = returnDto.Id }, returnDto);
         }
+        [HttpPatch("{instituteId}")]
+        public async Task<IActionResult> PartiallyUpdateInstitute(
+            Guid instituteId,
+            JsonPatchDocument<InstituteUpdateDto> patchDocument)
+        {
+            var instituteEntity = await _instituteRepository.GetInstituteAsync(instituteId);
 
+            if (instituteEntity == null)
+            {
+                return NotFound();
+            }
+
+            var dtoToPatch = _mapper.Map<InstituteUpdateDto>(instituteEntity);
+            //entity 转化为 updateDto
+            //把传进来的Institute的值更新到updateDto
+            //把updateDto映射回entity
+
+            //需要处理验证错误
+            patchDocument.ApplyTo(dtoToPatch);
+
+            _mapper.Map(dtoToPatch, instituteEntity);
+            _instituteRepository.UpdateInstitute(instituteEntity);
+            await _instituteRepository.SaveAsync();
+
+            return NoContent();
+        }
+
+
+        [HttpDelete("{instituteId}")]
+        public async Task<IActionResult> DeleteInstitute(Guid instituteId)
+        {
+            var instututeEntity = await _instituteRepository.GetInstituteAsync(instituteId);
+
+            if (instututeEntity == null)
+            {
+                return NotFound();
+            }
+
+            _instituteRepository.DeleteInstitute(instututeEntity);
+
+            await _instituteRepository.SaveAsync();
+
+            return NoContent();
+        }
+
+        [HttpOptions]
+        public IActionResult GetInstitutesOptions()
+        {
+            Response.Headers.Add("Allowss", "DELETE,GET,PATCH,PUT,OPTIONS");
+            return Ok();
+        }
 
     }
 }

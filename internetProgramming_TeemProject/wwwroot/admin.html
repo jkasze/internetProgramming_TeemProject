@@ -4,8 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="css/admin.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-    
+    <h1>NWU后台管理</h1>
+    <h2>学院管理</h2>
+    <div class="institute">
+        <form action="javascript:void(0);" method="POST" onsubmit="updateInstituce()">
+            <input type="text" id="instituteNum" placeholder="学院编号">
+            <input type="text" id="instituteName" placeholder="学院名称">
+            <input type="text" id="instituteIntroduction" placeholder="学院简介">
+            <input type="submit" value="添加">
+        </form>
+        <div id="edit_institute">
+            <h3>编辑学院</h3>
+        </div>
+        <table>
+            <tr>
+                <th>学院编号</th>
+                <th>学院名称</th>
+                <th>学院简介</th>
+            </tr>
+            <tbody id="instituteTable"></tbody>
+        </table>
+    </div>
+    <h2>教师管理</h2>
+    <div class="teacher">
+        <form method="POST" action="javascript:void(0);" onsubmit="addTeacher()">
+            <input type="text" id="teaherNum" placeholder="教师工号">
+            <input type="text" id="teacherName" placeholder="姓名">
+            <input type="text" id="teacherIntroduction" placeholder="教师简介">
+            <select id="institute"></select>
+            <input type="submit" value="添加">
+        </form>
+        <div id="edit_teacher">
+            <h3>编辑教师</h3>
+            <form method="POST" action="javascript:void(0);" onsubmit="uodateTeacher()">
+                <input type="hidden" id="teacherId">
+                <input type="hidden" id="instituteId">
+                <input type="text" id="edit_teacherNum">
+                <input type="text" id="edit_teacherName">
+                <input type="text" id="edit_teacherIntroduction">
+                <input type="submit"value="更改">
+                <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+            </form>
+        </div>
+        <table>
+            <tr>
+                <th>教工号</th>
+                <th>姓名</th>
+                <th>简介</th>
+                <th>更改教师信息</th>
+                <th>删除</th>
+            </tr>
+            <tbody id="teacherTable"></tbody>
+        </table>
+    </div>
+
+    <script src="js/admin.js"></script>
 </body>
 </html>

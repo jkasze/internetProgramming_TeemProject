@@ -1,2 +1,7 @@
-﻿body {
+﻿#edit_institute{
+    display: none;
+}
+
+#edit_teacher{
+    display: none;
 }

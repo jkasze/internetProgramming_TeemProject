@@ -23,10 +23,15 @@ async function getTeacher(id){
 
 //展示教师数据
 async function displayTeacher(id){
-    let teacherData = getTeacher(id);
+    let teacherData =await getTeacher(id);
     //获取teacher的父元素
     let father = document.getElementById(id);
-    data.forEach(item => {
+    let teachers = document.createElement("div");
+    teachers.classList.add("teachers");
+    teachers.style.display = 'none';
+    father.appendChild(teachers);
+
+    teacherData.forEach(item => {
         let teacher  = document.createElement("div");
         teacher.classList.add("teacher");
         teacher.id = item.id;
@@ -35,7 +40,8 @@ async function displayTeacher(id){
         <div class="teacherName">${item.teacherName}</div>
         <div class="teacherIntroduction"> ${item.teacherIntroduction}</div>
         `;
-        father.appendChild(teacher);
+        //teacher.style.display = "none";
+        teachers.appendChild(teacher);
     });
 
 }
@@ -51,9 +57,10 @@ async function displayInstitute(){
         <h3>${item.name}</h3>
         <div class="introduction">${item.introduction}</div>
         `;
+        displayTeacher(item.id);
         institute.addEventListener("click",(e)=>{
-            displayTeacher(item.id);
-            });
+            institute.lastElementChild.style.display = "block";
+        })
         institute.addEventListener("dblclick",(e) => {
             institute.lastElementChild.style.display = 'none';
         })
@@ -62,29 +69,3 @@ async function displayInstitute(){
 }
 
 displayInstitute();
-/*
-test = {
-    data : [
-        {
-        "id" : "1",
-        "name": "cs",
-        "introduction":'testcs',
-        "teachers":"helu"
-        },
-        {
-        "id" : "1",
-        "name": "cs",
-        "introduction":'testcs',
-        "teachers":"helu"
-        },
-        {
-        "id" : "1",
-        "name": "cs",
-        "introduction":'testcs',
-        "teachers":"helu"
-        },
-    ]
-}
-
-displayInstitute(test.data);
-*/

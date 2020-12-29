@@ -1,33 +1,38 @@
-body {
+*{
+    color: white;
+}
+body{
     background-color: #1c4f82;
 }
-h2{
-    color: white;
-}
-p{
-    color: white;
-}
 #institutes{
-    padding: 0;
-    border-color: black;
-    margin-left: 27%;
-    border: black solid 5px;
+    padding:20px;
+    height: 500px;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%,-50%);
     display:block;
     position: absolute;
-}
-.institute{
-    border: black solid 3px;
 
 }
+.institute{
+    padding: 20px 50px;
+    border-radius: 30px;
+    border: black solid 5px;
+    background-color: midnightblue;
+    margin-bottom: 50px;
+    border-style: outset;
+}
 .teacherNum{
-    border: black solid 1px;
+    margin-bottom: 0px;
 }
 .teacherName{
-    border: black solid 1px;
+    border-bottom: white outset 3px;
+    margin: 10px 10px;
+    padding: 10px 10px;
 }
 .introduction{
-    padding: 0;
-    margin-top: 0;
-    border-bottom: yellow solid 3px;
-    background-color: midnightblue;
+    padding: 10px;
+    margin:10px 20px;
+    border-bottom: black dashed 5px;
+
 }

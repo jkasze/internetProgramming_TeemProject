@@ -10,11 +10,14 @@
 }
 body{
     background-color: whitesmoke;
-    left: 50%;
-    top: 25%;
-    transform: translate(-50%,-50%);
-    display:block;
     position: absolute;
+    top: 200px;
+    left: 0;
+    right: 10px;
+    bottom: 10px;
+    margin: auto;
+    width: 1500px;
+    height: 1000px;
 
 }
 h1{

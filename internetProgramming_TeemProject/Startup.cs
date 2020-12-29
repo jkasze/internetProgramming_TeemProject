@@ -12,6 +12,8 @@ using internetProgramming_TeemProject.Models;
 using AutoMapper;
 using System;
 using Newtonsoft.Json.Serialization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.OpenApi.Models;
 
 namespace internetProgramming_TeemProject
 {
@@ -28,16 +30,24 @@ namespace internetProgramming_TeemProject
         {
             //services.AddDbContext<InstituteContext>(opt =>
             //opt.UseInMemoryDatabase("InstituteList"));
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "接口文档", Version = "v1" });
+            });
             services.AddControllers().AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddScoped<IInstituteRepository, InstituteRepository>();
+
             services.AddDbContext<ProjectDbContext>(options =>
             {
                 options.UseSqlite("Data Source=routine.db");
             });
+            
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -47,6 +57,12 @@ namespace internetProgramming_TeemProject
                 app.UseDeveloperExceptionPage();
             }
 
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("api/institute", "接口文档");
+            });
             app.UseDefaultFiles();
             app.UseStaticFiles();
 

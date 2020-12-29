@@ -35,6 +35,16 @@ namespace internetProgramming_TeemProject.Services
 
             _context.Institutes.Add(institute);
         }
+        public void AddCourse(Course course)
+        {
+            if(course == null)
+            {
+                throw new ArgumentNullException(nameof(course));
+            }
+            course.Id = Guid.NewGuid();
+
+            _context.Courses.Add(course);
+        }
 
         public void AddTeacher(Guid instituteId, Teacher teacher)
         {
@@ -61,6 +71,15 @@ namespace internetProgramming_TeemProject.Services
 
             return await _context.Institutes.AnyAsync(x => x.Id == instituteId);
         }
+        public async Task<bool>CourseExistAsync(Guid courseId)
+        {
+            if(courseId == Guid.Empty)
+            {
+                throw new ArgumentNullException(nameof(courseId));
+            }
+            return await _context.Courses.AnyAsync(x => x.Id == courseId);
+        }
+
 
         public void DeleteInstitute(Institute institute)
         {
@@ -70,6 +89,15 @@ namespace internetProgramming_TeemProject.Services
             }
 
             _context.Institutes.Remove(institute);
+        }
+        public void DeleteCourse(Course course)
+        {
+            if(course == null)
+            {
+                throw new ArgumentNullException(nameof(course));
+            }
+
+            _context.Courses.Remove(course);
         }
 
         public void DeleteTeacher(Teacher teacher)
@@ -92,11 +120,25 @@ namespace internetProgramming_TeemProject.Services
             return await _context.Institutes.FirstOrDefaultAsync(x => x.Id == instituteId);
         }
 
+        public async Task<Course> GetCourseAsync(Guid courseId)
+        {
+            if(courseId==Guid.Empty)
+            {
+                throw new ArgumentNullException(nameof(courseId));
+            }
+
+
+            return await _context.Courses.FirstOrDefaultAsync(x => x.Id == courseId);
+        }
+
         public async Task<IEnumerable<Institute>> GetInstitutesAsync()
         {
             return await _context.Institutes.ToListAsync();
         }
-
+        public async Task<IEnumerable<Course>>GetCoursesAsync()
+        {
+            return await _context.Courses.ToListAsync();
+        }
         public async Task<IEnumerable<Teacher>> GetAllTeachersAsync()
         {
             return await _context.Teachers.ToListAsync();
@@ -149,7 +191,10 @@ namespace internetProgramming_TeemProject.Services
             //无需显式地声明
             //_context.Entry(institute).State = EntityState.Modified;
         }
+        public void UpdateCourse(Course course)
+        {
 
+        }
         public void UpdateTeacher(Teacher teacher)
         {
             //无需显式地声明

@@ -28,5 +28,11 @@ namespace internetProgramming_TeemProject.Services
         void AddStudent(Guid instituteId, Student student);
         void UpdateStudent(Student student);
         void DeleteStudent(Student student);
+
+        Task<IEnumerable<Course>> GetCoursesAsync();
+        Task<Course> GetCourseAsync(Guid courseId);
+        void AddCourse(Course course);
+        void UpdateCourse(Course course);
+        void DeleteCourse(Course course);
     }
 }

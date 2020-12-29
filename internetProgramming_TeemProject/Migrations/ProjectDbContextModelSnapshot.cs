@@ -32,6 +32,87 @@ namespace internetProgramming_TeemProject.Migrations
                     b.ToTable("Accounts");
                 });
 
+            modelBuilder.Entity("internetProgramming_TeemProject.Entities.Course", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CourseName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("CourseTime")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ExInfor")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ExName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("ExStart")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("ExSubmit")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ExTimes")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Information")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LabName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("LabPeriod")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("LabStep")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("LastSubmit")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PPTName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RefDocment")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("TheoryPeriod")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Courses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"),
+                            CourseName = "互联网程序设计",
+                            CourseTime = 0,
+                            ExInfor = "",
+                            ExName = "",
+                            ExStart = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExSubmit = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExTimes = 1,
+                            Information = "HTML+CSS+JavaScript+ASP.NET",
+                            LabName = "",
+                            LabPeriod = 180,
+                            LabStep = "",
+                            LastSubmit = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PPTName = "",
+                            RefDocment = "",
+                            StartTime = new DateTime(2020, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TheoryPeriod = 48
+                        });
+                });
+
             modelBuilder.Entity("internetProgramming_TeemProject.Entities.Institute", b =>
                 {
                     b.Property<Guid>("Id")
@@ -43,12 +124,10 @@ namespace internetProgramming_TeemProject.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(4)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Num")
-                        .IsRequired()
                         .HasMaxLength(3)
                         .HasColumnType("TEXT");
 
@@ -90,7 +169,6 @@ namespace internetProgramming_TeemProject.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("StudentName")
-                        .IsRequired()
                         .HasMaxLength(4)
                         .HasColumnType("TEXT");
 
@@ -141,7 +219,6 @@ namespace internetProgramming_TeemProject.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TeacherName")
-                        .IsRequired()
                         .HasMaxLength(4)
                         .HasColumnType("TEXT");
 
@@ -209,7 +286,7 @@ namespace internetProgramming_TeemProject.Migrations
                     b.HasOne("internetProgramming_TeemProject.Entities.Institute", "Institute")
                         .WithMany("Students")
                         .HasForeignKey("InstituteId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Institute");
@@ -220,7 +297,7 @@ namespace internetProgramming_TeemProject.Migrations
                     b.HasOne("internetProgramming_TeemProject.Entities.Institute", "Institute")
                         .WithMany("Teachers")
                         .HasForeignKey("InstituteId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Institute");

@@ -17,29 +17,39 @@ namespace internetProgramming_TeemProject.Data
         }
         public DbSet<Institute> Institutes { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
-        //public DbSet<Course> Courses { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Course> Courses { get; set; }
         public DbSet<Account> Accounts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Institute>().Property(x => x.Name).IsRequired().HasMaxLength(4);
-            modelBuilder.Entity<Institute>().Property(x => x.Num).IsRequired().HasMaxLength(3);
+            modelBuilder.Entity<Institute>().Property(x => x.Name).HasMaxLength(4);
+            modelBuilder.Entity<Institute>().Property(x => x.Num).HasMaxLength(3);
             modelBuilder.Entity<Institute>().Property(x => x.Introduction).HasMaxLength(500);
-            modelBuilder.Entity<Teacher>().Property(x => x.TeacherName).IsRequired().HasMaxLength(4); 
+            modelBuilder.Entity<Teacher>().Property(x => x.TeacherName).HasMaxLength(4); 
             modelBuilder.Entity<Teacher>()
                 .HasOne(x => x.Institute)
                 .WithMany(x => x.Teachers)
                 .HasForeignKey(x => x.InstituteId)
-                .OnDelete(DeleteBehavior.Restrict);
-            modelBuilder.Entity<Student>().Property(x => x.StudentName).IsRequired().HasMaxLength(4);
-            modelBuilder.Entity<Student>().Property(x => x.StudentNum).IsRequired().HasMaxLength(8);
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Course>()
+                .HasOne(x => x.teacher)
+                .WithMany(x => x.Courses)
+                .HasForeignKey(x => x.Id)
+                .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<Course>()
+                .HasOne(x => x.student)
+                .WithMany(x => x.Courses)
+                .HasForeignKey(x => x.Id)
+                .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<Student>().Property(x => x.StudentName).HasMaxLength(4);
+            modelBuilder.Entity<Student>().Property(x => x.StudentNum).HasMaxLength(8);
             modelBuilder.Entity<Student>()
-                .HasOne(x => x.Institute)
-                .WithMany(x => x.Students)
-                .HasForeignKey(x => x.InstituteId)
-                .OnDelete(DeleteBehavior.Restrict);
-            //modelBuilder.Entity<Course>().Property(x => x.CourseName).IsRequired().HasMaxLength(12);
+                 .HasOne(x => x.Institute)
+                 .WithMany(x => x.Students)
+                 .HasForeignKey(x => x.InstituteId)
+                 .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<Course>().Property(x => x.CourseName).HasMaxLength(12);
             modelBuilder.Entity<Institute>().HasData(
                 new Institute
                 {
@@ -134,6 +144,28 @@ namespace internetProgramming_TeemProject.Data
                     StudentName = "封觉",
                 }
             );
+            modelBuilder.Entity<Course>().HasData(
+                new Course
+                {
+                    Id = Guid.Parse("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"),
+                    CourseName = "互联网程序设计",
+                    CourseTime = CourseTime.FirstSemester,
+                    StartTime = new DateTime(2020,09,01,00,00,00),
+                    TheoryPeriod = 48,
+                    LabPeriod = 180,
+                    Information = "HTML+CSS+JavaScript+ASP.NET",
+                    PPTName = "",
+                    LabName = "",
+                    LabStep = "",
+                    RefDocment = "",
+                    LastSubmit = new DateTime(),
+                    ExTimes = 1,
+                    ExName = "",
+                    ExInfor = "",
+                    ExStart = new DateTime(),
+                    ExSubmit = new DateTime(),
+                }
+                );
         }
     
     }

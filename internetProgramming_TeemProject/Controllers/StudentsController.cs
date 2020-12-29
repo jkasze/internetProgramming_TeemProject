@@ -36,6 +36,7 @@ namespace internetProgramming_TeemProject.Controllers
             }
             var students = await _instituteRepository.GetStudentsAsync(instituteId);
 
+
             var studentDtos = _mapper.Map<IEnumerable<StudentDto>>(students);
 
             return Ok(studentDtos);

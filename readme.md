@@ -30,7 +30,7 @@ DELETE api/institute/{instituteId}
 
 POST api/institute/{instituteId}/teacher/ 参数为teacherNum,teacherName,
 
-teacherIntroductionIntroduction 用于增加某个学院下的老师
+teacherIntroduction 用于增加某个学院下的老师
 
 PATCH api/institute/{instituteId}/teacher/{teacherId} 用于修改某个学院下某个老师的信息。其中op为操作，默认replace即可，path为操作的字段，需要加反斜线/，value为修改后的值。
 
@@ -74,4 +74,32 @@ DELETE api/institute/{instituteId}/student/{studentId} 用于删除某个学院�
 
 GET api/student?q=学号  用于通过学号获得学生所有信息。（未实现）
 
- 
+###### 教师API
+
+课程：
+
+GET api/course 用于获得全体课程列表
+
+GET api/course/{courseId} 用于获得某个特定课程的基本信息
+
+POST api/course/{courseId} 用于添加某个特定课程的基本信息
+
+PATCH api/course/{courseId} 用于修改某个课程的信息。其中op为操作，默认replace即可，path为操作的字段，需要加反斜线/，value为修改后的值。
+
+DELETE api/course/{courseId} 用于删除某个特定课程的信息。
+
+GET api/course/{courseId}/lab 用于获得某个特定课程的实验信息
+
+PATCH api/course/{courseId}/lab
+
+删除：![image-20201229191305855](C:\Users\jkasze\AppData\Roaming\Typora\typora-user-images\image-20201229191305855.png)
+
+更改：![image-20201229191334601](C:\Users\jkasze\AppData\Roaming\Typora\typora-user-images\image-20201229191334601.png)
+
+增加：
+
+![image-20201229191417366](C:\Users\jkasze\AppData\Roaming\Typora\typora-user-images\image-20201229191417366.png)
+
+api/course/{courseId}/ex
+
+api/course/{courseId}/PPT 同理

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.AspNetCore.JsonPatch;
 namespace internetProgramming_TeemProject.Entities
 {
     //使用枚举类型定义课程的上课时间
@@ -10,34 +10,36 @@ namespace internetProgramming_TeemProject.Entities
     {
         FirstSemester, SecondSemester,TheFirstHalfFirstSemester, TheSecondHalfFirstSemester, TheFirstHalfSecondSemester, TheSecondHalfSecondSemester
     }
-    /*public class Course
+    public class Course
     {
-        public Guid CourseId { get; set; }
+        public Guid Id { get; set; }
+       
         //基本信息
         public string CourseName { get; set; }
         public DateTime StartTime { get; set; }
         public CourseTime CourseTime { get; set; }
-        public int theoryPeriod { get; set; }
-        public int labPeriod { get; set; }
+        public int TheoryPeriod { get; set; }
+        public int LabPeriod { get; set; }
         public string Information { get; set; }
         //拓展信息
         //课件
-        public string pptNmae { get; set; }
+        public string PPTName { get; set; }
 
         //实验
-        public string labName { get;set;}
-        public string labStep { get; set; }
+        public string LabName { get;set;}
+        public string LabStep { get; set; }
 
-        public string refDocment { get; set; }
-        public DateTime lastSubmit { get; set; }
+        public string RefDocment { get; set; }
+        public DateTime LastSubmit { get; set; }
         //作业
-        public int exTimes { get; set; }
-        public string exName { get; set; }
-        public string exInfor { get; set; }
-        public DateTime exStrat { get; set; }
-        public DateTime exSubmit { get; set; }
+        public int ExTimes { get; set; }
+        public string ExName { get; set; }
+        public string ExInfor { get; set; }
+        public DateTime ExStart { get; set; }
+        public DateTime ExSubmit { get; set; }
 
-        public ICollection<Teacher> Teachers { get; set; }
-        public ICollection<Student> Students { get; set; }
-    }*/
+        public Teacher teacher { get; set; }
+        public Student student { get; set; }
+
+    }
 }

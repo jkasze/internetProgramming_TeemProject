@@ -1,2 +1,56 @@
-﻿body {
+﻿#edit_institute{
+    display: none;
+}
+
+#edit_teacher{
+    display: none;
+}
+body{
+    background-color: whitesmoke;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%,-50%);
+    display:block;
+    position: absolute;
+
+}
+h1{
+    color:#1c4f82;
+}
+h2{
+    color:#1c4f82;
+}
+.institute{
+    border: #1c4f82 solid 5px;
+    display:block;
+    border-radius: 10px;
+    padding: 20px;
+}
+.teacher{
+    border: #1c4f82 solid 5px;
+    display:block;
+    border-radius: 10px;
+    padding: 20px;
+}
+input{
+    outline-style: none ;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 8px 10px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Microsoft soft";
+}
+button,input[type="submit"]{
+    background-color: #4CAF50;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 5px;
+}
+th,td{
+    padding: 5px 15px;
 }

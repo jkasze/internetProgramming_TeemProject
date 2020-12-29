@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="css/admin.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css" type="text/css">
 </head>
 <body>
     <h1>NWU后台管理</h1>
@@ -31,7 +31,7 @@
     <h2>教师管理</h2>
     <div class="teacher">
         <form method="POST" action="javascript:void(0);" onsubmit="addTeacher()">
-            <input type="text" id="teaherNum" placeholder="教师工号">
+            <input type="text" id="teacherNum" placeholder="教师工号">
             <input type="text" id="teacherName" placeholder="姓名">
             <input type="text" id="teacherIntroduction" placeholder="教师简介">
             <select id="institute"></select>
@@ -39,7 +39,7 @@
         </form>
         <div id="edit_teacher">
             <h3>编辑教师</h3>
-            <form method="POST" action="javascript:void(0);" onsubmit="uodateTeacher()">
+            <form method="POST" action="javascript:void(0);" onsubmit="updateTeacher()">
                 <input type="hidden" id="teacherId">
                 <input type="hidden" id="instituteId">
                 <input type="text" id="edit_teacherNum">
@@ -61,6 +61,35 @@
         </table>
     </div>
 
+    <h2>学生管理</h2>
+    <div class="student">
+        <form method="POST" action="javascript:void(0);" onsubmit="addStudent()">
+            <input type="text" id="studentNum" placeholder="学号">
+            <input type="text" id="studentName" placeholder="姓名">
+            <select id="studentSelectInstituteId"></select>
+            <input type="submit" value="添加">
+        </form>
+        <div id="edit_student">
+            <h3>编辑学生</h3>
+            <form method="POST" action="javascript:void(0);" onsubmit="updateStudent()">
+                <input type="hidden" id="studentId">
+                <input type="hidden" id="studentInstituteId">
+                <input type="text" id="edit_studnetNum">
+                <input type="text" id="edit_studentName">
+                <input type="submit"value="更改">
+                <a onclick="closeStudentInput()" aria-label="Close">&#10006;</a>
+            </form>
+        </div>
+        <table>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>更改学生信息</th>
+                <th>删除</th>
+            </tr>
+            <tbody id="studentTable"></tbody>
+        </table>
+    </div>
     <script src="js/admin.js"></script>
 </body>
 </html>

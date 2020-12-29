@@ -5,6 +5,9 @@
 #edit_teacher{
     display: none;
 }
+#edit_student{
+    display: none;
+}
 body{
     background-color: whitesmoke;
     left: 50%;
@@ -27,6 +30,12 @@ h2{
     padding: 20px;
 }
 .teacher{
+    border: #1c4f82 solid 5px;
+    display:block;
+    border-radius: 10px;
+    padding: 20px;
+}
+.student{
     border: #1c4f82 solid 5px;
     display:block;
     border-radius: 10px;

@@ -133,7 +133,7 @@ namespace internetProgramming_TeemProject.Controllers
 
             return NoContent();
         }
-        [HttpGet("allStudent")]
+        [HttpGet("allstudent")]
         public async Task<IActionResult> GetAllStudent()
         {
             var students = await _instituteRepository.GetAllStudentsAsync();

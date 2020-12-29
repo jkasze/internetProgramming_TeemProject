@@ -9,8 +9,8 @@ using internetProgramming_TeemProject.Data;
 namespace internetProgramming_TeemProject.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    [Migration("20201229130646_add123")]
-    partial class add123
+    [Migration("20201229134226_31")]
+    partial class _31
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

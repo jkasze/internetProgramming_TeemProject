@@ -2,7 +2,7 @@
 
 namespace internetProgramming_TeemProject.Migrations
 {
-    public partial class add4 : Migration
+    public partial class _31 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

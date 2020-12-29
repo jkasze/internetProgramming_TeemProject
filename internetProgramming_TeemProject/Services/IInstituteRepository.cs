@@ -10,7 +10,6 @@ namespace internetProgramming_TeemProject.Services
     {
         Task<IEnumerable<Institute>> GetInstitutesAsync();
         Task<IEnumerable<Teacher>> GetAllTeachersAsync();
-        Task<IEnumerable<Student>> GetAllStudentsAsync();
         Task<Institute> GetInstituteAsync(Guid instituteId);
         Task<IEnumerable<Institute>> GetInstitutesAsync(IEnumerable<Guid> instituteIds);
         void AddInstitute(Institute institute);

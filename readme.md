@@ -22,8 +22,6 @@ GET api/course?q=工号或Guid 用于获得某一老师的开课信息（未实�
 
 GET api/institute/allteacher 用于获得教师账号列表。
 
-GET api/institute/allstudent 用于获得教师账号列表。
-
 POST api/institute/ 参数为num,name,informtation 用于增加一个学院。
 
 PATCH api/institute/{instituteId} 用于增加某个学院下的老师，DEMO看下面的。

@@ -141,7 +141,6 @@ namespace internetProgramming_TeemProject.Controllers
             return Ok(teacherDtos);  //OK() 返回状态码200
         }
 
-
         [HttpOptions]
         public IActionResult GetStudentsOptions()
         {

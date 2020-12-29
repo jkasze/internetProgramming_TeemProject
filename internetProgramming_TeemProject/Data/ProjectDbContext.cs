@@ -15,12 +15,8 @@ namespace internetProgramming_TeemProject.Data
         {
 
         }
-
-
-
         public DbSet<Institute> Institutes { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
-        //public DbSet<StudentCourse> StudentCourse { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Account> Accounts { get; set; }
@@ -36,7 +32,7 @@ namespace internetProgramming_TeemProject.Data
                 .WithMany(x => x.Teachers)
                 .HasForeignKey(x => x.InstituteId)
                 .OnDelete(DeleteBehavior.Cascade);
-            /*modelBuilder.Entity<Course>()
+            modelBuilder.Entity<Course>()
                 .HasOne(x => x.teacher)
                 .WithMany(x => x.Courses)
                 .HasForeignKey(x => x.Id)
@@ -45,7 +41,7 @@ namespace internetProgramming_TeemProject.Data
                 .HasOne(x => x.student)
                 .WithMany(x => x.Courses)
                 .HasForeignKey(x => x.Id)
-                .OnDelete(DeleteBehavior.SetNull);*/
+                .OnDelete(DeleteBehavior.SetNull);
             modelBuilder.Entity<Student>().Property(x => x.StudentName).HasMaxLength(4);
             modelBuilder.Entity<Student>().Property(x => x.StudentNum).HasMaxLength(8);
             modelBuilder.Entity<Student>()
@@ -154,7 +150,7 @@ namespace internetProgramming_TeemProject.Data
                     Id = Guid.Parse("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"),
                     CourseName = "互联网程序设计",
                     CourseTime = CourseTime.FirstSemester,
-                    StartTime = new DateTime(2020, 09, 01, 00, 00, 00),
+                    StartTime = new DateTime(2020,09,01,00,00,00),
                     TheoryPeriod = 48,
                     LabPeriod = 180,
                     Information = "HTML+CSS+JavaScript+ASP.NET",

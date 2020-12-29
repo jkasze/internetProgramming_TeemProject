@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.JsonPatch;
 namespace internetProgramming_TeemProject.Entities
 {
+
     //使用枚举类型定义课程的上课时间
     public enum CourseTime
     {
@@ -12,6 +13,10 @@ namespace internetProgramming_TeemProject.Entities
     }
     public class Course
     {
+        /*public Course()
+        {
+            StudentCourse = new List<StudentCourse>();
+        }*/
         public Guid Id { get; set; }
        
         //基本信息
@@ -38,8 +43,6 @@ namespace internetProgramming_TeemProject.Entities
         public DateTime ExStart { get; set; }
         public DateTime ExSubmit { get; set; }
 
-        public Teacher teacher { get; set; }
-        public Student student { get; set; }
-
+        //public List<StudentCourse> StudentCourse { get; set; }
     }
 }

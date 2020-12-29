@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.JsonPatch;
 namespace internetProgramming_TeemProject.Controllers
 {
     [ApiController]
-    [Route("api/institute/{instituteId}/student")]
+    [Route("api/institute")]
     public class StudentsController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -26,7 +26,7 @@ namespace internetProgramming_TeemProject.Controllers
             _instituteRepository = instituteRepository ?? throw new ArgumentNullException(nameof(instituteRepository));
         }
 
-        [HttpGet]
+        [HttpGet("{instituteId}/student")]
         public async Task<ActionResult<StudentDto>>
             GetStudentsForInstitute(Guid instituteId)
         {
@@ -42,7 +42,7 @@ namespace internetProgramming_TeemProject.Controllers
             return Ok(studentDtos);
         }
 
-        [HttpGet("{studentId}", Name = nameof(GetStudentForInstitute))]  //还可用 [Route("{companyId}")]
+        [HttpGet("{instituteId}/student/{studentId}", Name = nameof(GetStudentForInstitute))]  //还可用 [Route("{companyId}")]
         public async Task<ActionResult<StudentDto>>
             GetStudentForInstitute(Guid studentId, Guid instituteId)
         {
@@ -60,7 +60,7 @@ namespace internetProgramming_TeemProject.Controllers
             return Ok(studentDto);
         }
 
-        [HttpPost]
+        [HttpPost("{instituteId}/student")]
         public async Task<ActionResult<StudentDto>>
             CreateStudentForInstitute(Guid instituteId, StudentAddDto student)
         {
@@ -81,7 +81,7 @@ namespace internetProgramming_TeemProject.Controllers
             }, dtoToReturn);
         }
 
-        [HttpPatch("{studentId}")]
+        [HttpPatch("{instituteId}/student/{studentId}")]
         public async Task<IActionResult> PartiallyUpdateStudentForInstitute(
             Guid instituteId,
             Guid studentId,
@@ -113,7 +113,7 @@ namespace internetProgramming_TeemProject.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{studentId}")]
+        [HttpDelete("{instituteId}/student/{studentId}")]
         public async Task<IActionResult> DeleteStudentForInstitute(Guid instituteId, Guid studentId)
         {
             if (!await _instituteRepository.InstituteExistsAsync(instituteId))
@@ -133,7 +133,15 @@ namespace internetProgramming_TeemProject.Controllers
 
             return NoContent();
         }
+        [HttpGet("allStudent")]
+        public async Task<IActionResult> GetAllStudent()
+        {
+            var students = await _instituteRepository.GetAllStudentsAsync();
 
+            var studentDtos = _mapper.Map<IEnumerable<StudentDto>>(students);
+
+            return Ok(studentDtos);  //OK() 返回状态码200
+        }
         [HttpOptions]
         public IActionResult GetStudentsOptions()
         {

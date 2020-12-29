@@ -143,6 +143,10 @@ namespace internetProgramming_TeemProject.Services
         {
             return await _context.Teachers.ToListAsync();
         }
+        public async Task<IEnumerable<Student>> GetAllStudentsAsync()
+        {
+            return await _context.Students.ToListAsync();
+        }
 
         public async Task<IEnumerable<Institute>> GetInstitutesAsync(IEnumerable<Guid> instituteIds)
         {

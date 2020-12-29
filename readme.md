@@ -92,13 +92,43 @@ GET api/course/{courseId}/lab 用于获得某个特定课程的实验信息
 
 PATCH api/course/{courseId}/lab
 
-删除：![image-20201229191305855](C:\Users\jkasze\AppData\Roaming\Typora\typora-user-images\image-20201229191305855.png)
+删除：
 
-更改：![image-20201229191334601](C:\Users\jkasze\AppData\Roaming\Typora\typora-user-images\image-20201229191334601.png)
+```
+[
+    {
+    "op": "remove",
+    "path": "/TeacherIntroduction",
+    "value": "徐老师一生志在四方，足迹遍及今21个省、市、自治区，“达人所之未达，探人所之未知”，所到之处，探幽寻秘，并记有游记，记录观察到的各种现象、人文、地理、动植物等状况。"
+    }
+]
+```
+
+更改：
+
+```
+[
+    {
+    "op": "replace",
+    "path": "/TeacherIntroduction",
+    "value": "徐老师一生志在四方，足迹遍及今21个省、市、自治区，“达人所之未达，探人所之未知”，所到之处，探幽寻秘，并记有游记，记录观察到的各种现象、人文、地理、动植物等状况。"
+    }
+]
+```
 
 增加：
 
-![image-20201229191417366](C:\Users\jkasze\AppData\Roaming\Typora\typora-user-images\image-20201229191417366.png)
+```
+[
+    {
+    "op": "add",
+    "path": "/TeacherIntroduction",
+    "value": "徐老师一生志在四方，足迹遍及今21个省、市、自治区，“达人所之未达，探人所之未知”，所到之处，探幽寻秘，并记有游记，记录观察到的各种现象、人文、地理、动植物等状况。"
+    }
+]
+```
+
+
 
 api/course/{courseId}/ex
 

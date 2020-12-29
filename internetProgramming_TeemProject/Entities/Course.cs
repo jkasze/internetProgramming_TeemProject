@@ -38,8 +38,8 @@ namespace internetProgramming_TeemProject.Entities
         public DateTime ExStart { get; set; }
         public DateTime ExSubmit { get; set; }
 
-        public Teacher teacher { get; set; }
-        public Student student { get; set; }
+        //public Teacher teacher { get; set; }
+        //public Student student { get; set; }
 
     }
 }

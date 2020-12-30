@@ -19,6 +19,7 @@ namespace internetProgramming_TeemProject.Entities
         //public Course Course{ get; set; }
         //public StudentCourse StudentCourse { get; set; }
         public ICollection<StudentCourse> StudentCourses { get; set; }
+
     }
 
 }

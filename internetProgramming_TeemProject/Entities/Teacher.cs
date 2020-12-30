@@ -16,5 +16,7 @@ namespace internetProgramming_TeemProject.Entities
         public Institute Institute { get; set; }
         //public ICollection<Course> Courses { get; set; }
         //public Course Course { get; set; }
+        public ICollection<TeacherCourse> TeacherCourses { get; set; }
+
     }
 }

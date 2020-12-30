@@ -104,19 +104,51 @@ namespace internetProgramming_TeemProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "StudentCourse",
+                name: "StudentCourses",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    StudentId = table.Column<Guid>(type: "TEXT", nullable: false)
+                    StudentId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    CourseId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StudentCourse", x => x.Id);
+                    table.PrimaryKey("PK_StudentCourses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_StudentCourse_Students_StudentId",
+                        name: "FK_StudentCourses_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_StudentCourses_Students_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Students",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TeacherCourses",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    TeacherId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    CourseId = table.Column<Guid>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TeacherCourses", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TeacherCourses_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_TeacherCourses_Teachers_TeacherId",
+                        column: x => x.TeacherId,
+                        principalTable: "Teachers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.SetNull);
                 });
@@ -192,24 +224,49 @@ namespace internetProgramming_TeemProject.Migrations
                 values: new object[] { new Guid("5d27fb1c-f235-e1ce-fe63-ae6e664a27fa"), new Guid("5efc910b-2f45-43df-afee-620d40542853"), "", "郭孟源", 201502L });
 
             migrationBuilder.InsertData(
-                table: "StudentCourse",
-                columns: new[] { "Id", "StudentId" },
-                values: new object[] { new Guid("a57d2b4e-6fd9-4b9a-912d-ab9902043612"), new Guid("ffa9e244-2743-43b4-8d62-b162700b78d7") });
+                table: "StudentCourses",
+                columns: new[] { "Id", "CourseId", "StudentId" },
+                values: new object[] { new Guid("a57d2b4e-6fd9-4b9a-912d-ab9902043612"), new Guid("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"), new Guid("ffa9e244-2743-43b4-8d62-b162700b78d7") });
 
             migrationBuilder.InsertData(
-                table: "StudentCourse",
-                columns: new[] { "Id", "StudentId" },
-                values: new object[] { new Guid("76e77dc8-dfb0-4cbb-9830-dc0ac3d5b98b"), new Guid("9011e45a-a408-bb72-50eb-d5ee66875dd3") });
+                table: "StudentCourses",
+                columns: new[] { "Id", "CourseId", "StudentId" },
+                values: new object[] { new Guid("76e77dc8-dfb0-4cbb-9830-dc0ac3d5b98b"), new Guid("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"), new Guid("9011e45a-a408-bb72-50eb-d5ee66875dd3") });
+
+            migrationBuilder.InsertData(
+                table: "TeacherCourses",
+                columns: new[] { "Id", "CourseId", "TeacherId" },
+                values: new object[] { new Guid("d7de8b17-39bd-4ab6-b98a-76591ba62ca5"), new Guid("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"), new Guid("ca268a19-0f39-4d8b-b8d6-5bace54f8027") });
+
+            migrationBuilder.InsertData(
+                table: "TeacherCourses",
+                columns: new[] { "Id", "CourseId", "TeacherId" },
+                values: new object[] { new Guid("8ad8bf28-7751-442f-906f-4eb9a0a15569"), new Guid("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"), new Guid("47b70abc-98b8-4fdc-b9fa-5dd6716f6e6b") });
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentCourse_StudentId",
-                table: "StudentCourse",
+                name: "IX_StudentCourses_CourseId",
+                table: "StudentCourses",
+                column: "CourseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_StudentCourses_StudentId",
+                table: "StudentCourses",
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Students_InstituteId",
                 table: "Students",
                 column: "InstituteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TeacherCourses_CourseId",
+                table: "TeacherCourses",
+                column: "CourseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TeacherCourses_TeacherId",
+                table: "TeacherCourses",
+                column: "TeacherId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Teachers_InstituteId",
@@ -223,16 +280,19 @@ namespace internetProgramming_TeemProject.Migrations
                 name: "Accounts");
 
             migrationBuilder.DropTable(
-                name: "Courses");
+                name: "StudentCourses");
 
             migrationBuilder.DropTable(
-                name: "StudentCourse");
-
-            migrationBuilder.DropTable(
-                name: "Teachers");
+                name: "TeacherCourses");
 
             migrationBuilder.DropTable(
                 name: "Students");
+
+            migrationBuilder.DropTable(
+                name: "Courses");
+
+            migrationBuilder.DropTable(
+                name: "Teachers");
 
             migrationBuilder.DropTable(
                 name: "Institutes");

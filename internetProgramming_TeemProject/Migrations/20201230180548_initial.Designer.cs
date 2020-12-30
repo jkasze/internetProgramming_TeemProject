@@ -9,8 +9,8 @@ using internetProgramming_TeemProject.Data;
 namespace internetProgramming_TeemProject.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    [Migration("20201230171259_a")]
-    partial class a
+    [Migration("20201230180548_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -239,7 +239,7 @@ namespace internetProgramming_TeemProject.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("StudentCourse");
+                    b.ToTable("StudentCourses");
 
                     b.HasData(
                         new
@@ -331,6 +331,41 @@ namespace internetProgramming_TeemProject.Migrations
                         });
                 });
 
+            modelBuilder.Entity("internetProgramming_TeemProject.Entities.TeacherCourse", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("CourseId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("TeacherId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("TeacherId");
+
+                    b.ToTable("TeacherCourses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("8ad8bf28-7751-442f-906f-4eb9a0a15569"),
+                            CourseId = new Guid("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"),
+                            TeacherId = new Guid("47b70abc-98b8-4fdc-b9fa-5dd6716f6e6b")
+                        },
+                        new
+                        {
+                            Id = new Guid("d7de8b17-39bd-4ab6-b98a-76591ba62ca5"),
+                            CourseId = new Guid("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"),
+                            TeacherId = new Guid("ca268a19-0f39-4d8b-b8d6-5bace54f8027")
+                        });
+                });
+
             modelBuilder.Entity("internetProgramming_TeemProject.Entities.Student", b =>
                 {
                     b.HasOne("internetProgramming_TeemProject.Entities.Institute", "Institute")
@@ -372,9 +407,30 @@ namespace internetProgramming_TeemProject.Migrations
                     b.Navigation("Institute");
                 });
 
+            modelBuilder.Entity("internetProgramming_TeemProject.Entities.TeacherCourse", b =>
+                {
+                    b.HasOne("internetProgramming_TeemProject.Entities.Course", "Course")
+                        .WithMany("TeacherCourses")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .IsRequired();
+
+                    b.HasOne("internetProgramming_TeemProject.Entities.Teacher", "Teacher")
+                        .WithMany("TeacherCourses")
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .IsRequired();
+
+                    b.Navigation("Course");
+
+                    b.Navigation("Teacher");
+                });
+
             modelBuilder.Entity("internetProgramming_TeemProject.Entities.Course", b =>
                 {
                     b.Navigation("StudentCourses");
+
+                    b.Navigation("TeacherCourses");
                 });
 
             modelBuilder.Entity("internetProgramming_TeemProject.Entities.Institute", b =>
@@ -387,6 +443,11 @@ namespace internetProgramming_TeemProject.Migrations
             modelBuilder.Entity("internetProgramming_TeemProject.Entities.Student", b =>
                 {
                     b.Navigation("StudentCourses");
+                });
+
+            modelBuilder.Entity("internetProgramming_TeemProject.Entities.Teacher", b =>
+                {
+                    b.Navigation("TeacherCourses");
                 });
 #pragma warning restore 612, 618
         }

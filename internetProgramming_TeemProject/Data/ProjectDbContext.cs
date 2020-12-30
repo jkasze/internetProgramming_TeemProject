@@ -20,6 +20,7 @@ namespace internetProgramming_TeemProject.Data
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<StudentCourse> StudentCourses{ get; set; }
+        public DbSet<TeacherCourse> TeacherCourses { get; set; }
         public DbSet<Account> Accounts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -52,6 +53,17 @@ namespace internetProgramming_TeemProject.Data
                 .HasOne(x => x.Course)
                 .WithMany(x => x.StudentCourses)
                 .HasForeignKey(x => x.CourseId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<TeacherCourse>()
+                .HasOne(x => x.Course)
+                .WithMany(x => x.TeacherCourses)
+                .HasForeignKey(x => x.CourseId)
+                .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<TeacherCourse>()
+                .HasOne(x => x.Teacher)
+                .WithMany(x => x.TeacherCourses)
+                .HasForeignKey(x => x.TeacherId)
                 .OnDelete(DeleteBehavior.SetNull);
             modelBuilder.Entity<Student>().Property(x => x.StudentName).HasMaxLength(4);
             modelBuilder.Entity<Student>().Property(x => x.StudentNum).HasMaxLength(8);
@@ -147,6 +159,20 @@ namespace internetProgramming_TeemProject.Data
         StudentId = Guid.Parse("9011e45a-a408-bb72-50eb-d5ee66875dd3"),
     }
     );
+            modelBuilder.Entity<TeacherCourse>().HasData(
+                new TeacherCourse
+                {
+                    Id = Guid.Parse("8ad8bf28-7751-442f-906f-4eb9a0a15569"),
+                    CourseId = Guid.Parse("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"),
+                    TeacherId = Guid.Parse("47b70abc-98b8-4fdc-b9fa-5dd6716f6e6b"),
+                },
+                new TeacherCourse
+                {
+                    Id = Guid.Parse("d7de8b17-39bd-4ab6-b98a-76591ba62ca5"),
+                    CourseId = Guid.Parse("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"),
+                    TeacherId = Guid.Parse("ca268a19-0f39-4d8b-b8d6-5bace54f8027"),
+                }
+                );
             modelBuilder.Entity<Student>().HasData(
                 new Student
                 {

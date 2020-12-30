@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace internetProgramming_TeemProject.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/institute")] 
     public class TeachersController : ControllerBase
@@ -141,7 +141,15 @@ namespace internetProgramming_TeemProject.Controllers
 
             return Ok(teacherDtos);  //OK() 返回状态码200
         }
+        [HttpGet("teacher/{teacherId}/courses")]
+        public async Task<IActionResult> GetCourseFromTeacher(Guid teacherId)
+        {
+            var courses = await _instituteRepository.GetCourseFromTeacherAsync(teacherId);
 
+            var CourseTeacherDtos = _mapper.Map<IEnumerable<TeacherCourseDto>>(courses);
+
+            return Ok(CourseTeacherDtos);
+        }
         [HttpOptions]
         public IActionResult GetStudentsOptions()
         {

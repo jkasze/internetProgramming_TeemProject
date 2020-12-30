@@ -10,8 +10,11 @@ using internetProgramming_TeemProject.Entities;
 using internetProgramming_TeemProject.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Authorization;
+
 namespace internetProgramming_TeemProject.Controllers
 {
+    [AllowAnonymous]
     [ApiController]
     [Route("api/course")] //还可用 [Route("api/[controller]")]
     public class coursesController : ControllerBase

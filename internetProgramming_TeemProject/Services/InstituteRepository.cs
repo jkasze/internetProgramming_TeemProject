@@ -120,6 +120,21 @@ namespace internetProgramming_TeemProject.Services
             return await _context.Institutes.FirstOrDefaultAsync(x => x.Id == instituteId);
         }
 
+        public  Task<Account> GetTokenAsync(string username, string password) 
+        {
+            if(username == null)
+            {
+                throw new ArgumentNullException(nameof(username));
+            }
+            if (password == null)
+            {
+                throw new ArgumentNullException(nameof(password));
+            }
+            return _context.Accounts
+                    .Where(x => x.Password == password && x.UserName == username)
+                        .FirstOrDefaultAsync();
+        }
+
         public async Task<Course> GetCourseAsync(Guid courseId)
         {
             if(courseId==Guid.Empty)

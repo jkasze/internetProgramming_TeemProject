@@ -9,10 +9,11 @@ using internetProgramming_TeemProject.Services;
 using internetProgramming_TeemProject.Entities;
 using internetProgramming_TeemProject.Models;
 using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Authorization;
 
 namespace internetProgramming_TeemProject.Controllers
 {
-    
+    [Authorize]
     [ApiController]
     [Route("api/institute")] 
     public class TeachersController : ControllerBase
@@ -25,7 +26,7 @@ namespace internetProgramming_TeemProject.Controllers
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _instituteRepository = instituteRepository ?? throw new ArgumentNullException(nameof(instituteRepository));
         }
-
+        [AllowAnonymous]
         [HttpGet("{instituteId}/teacher")]
         public async Task<ActionResult<TeacherDto>>
             GetTeachersForInstitute(Guid instituteId)
@@ -40,7 +41,7 @@ namespace internetProgramming_TeemProject.Controllers
 
             return Ok(teacherDtos);
         }
-
+        [AllowAnonymous]
         [HttpGet("{instituteId}/teacher/{teacherId}", Name = nameof(GetTeacherForInstitute))]  //还可用 [Route("{companyId}")]
         public async Task<ActionResult<TeacherDto>>
             GetTeacherForInstitute(Guid teacherId, Guid instituteId)

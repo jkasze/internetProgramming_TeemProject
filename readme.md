@@ -82,7 +82,7 @@ GET api/course 用于获得全体课程列表
 
 GET api/course/{courseId} 用于获得某个特定课程的基本信息
 
-POST api/course/{courseId} 用于添加某个特定课程的基本信息
+POST api/course/用于添加某个特定课程的基本信息
 
 PATCH api/course/{courseId} 用于修改某个课程的信息。其中op为操作，默认replace即可，path为操作的字段，需要加反斜线/，value为修改后的值。
 

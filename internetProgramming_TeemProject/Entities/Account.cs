@@ -14,9 +14,8 @@ namespace internetProgramming_TeemProject.Entities
     
     public class Account
     {
-        //接收用户输入主键，不需要数据库自生成
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long AccountId { get; set; }
+        public Guid Id { get; set; }
+        public string UserName { get; set; }
         public string Password { get; set; }
         public AccountType Type { get; set; }
 

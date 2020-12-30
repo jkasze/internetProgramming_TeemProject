@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using internetProgramming_TeemProject.Data;
 
 namespace internetProgramming_TeemProject.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    partial class ProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201230110849_account7")]
+    partial class account7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,15 +36,6 @@ namespace internetProgramming_TeemProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Accounts");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("4741a63f-aad1-4a38-8ac9-32e11689c32b"),
-                            Password = "20180101",
-                            Type = 0,
-                            UserName = "20181010"
-                        });
                 });
 
             modelBuilder.Entity("internetProgramming_TeemProject.Entities.Course", b =>

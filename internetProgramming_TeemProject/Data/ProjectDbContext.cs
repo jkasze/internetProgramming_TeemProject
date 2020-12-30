@@ -44,6 +44,7 @@ namespace internetProgramming_TeemProject.Data
                 .OnDelete(DeleteBehavior.SetNull);*/
             modelBuilder.Entity<Student>().Property(x => x.StudentName).HasMaxLength(4);
             modelBuilder.Entity<Student>().Property(x => x.StudentNum).HasMaxLength(8);
+            //modelBuilder.Entity<Account>().HasKey(x=>x.Id);
             modelBuilder.Entity<Student>()
                  .HasOne(x => x.Institute)
                  .WithMany(x => x.Students)
@@ -144,13 +145,22 @@ namespace internetProgramming_TeemProject.Data
                     StudentName = "封觉",
                 }
             );
+            modelBuilder.Entity<Account>().HasData(
+            new Account
+            {
+                Id = Guid.Parse("4741a63f-aad1-4a38-8ac9-32e11689c32b"),
+                UserName = "20181010",
+                Password = "20180101",
+                Type = AccountType.student,
+            });
+
             modelBuilder.Entity<Course>().HasData(
                 new Course
                 {
                     Id = Guid.Parse("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"),
                     CourseName = "互联网程序设计",
                     CourseTime = CourseTime.FirstSemester,
-                    StartTime = new DateTime(2020,09,01,00,00,00),
+                    StartTime = new DateTime(2020, 09, 01, 00, 00, 00),
                     TheoryPeriod = 48,
                     LabPeriod = 180,
                     Information = "HTML+CSS+JavaScript+ASP.NET",
@@ -165,6 +175,7 @@ namespace internetProgramming_TeemProject.Data
                     ExStart = new DateTime(),
                     ExSubmit = new DateTime(),
                 }
+               
                 );
         }
     

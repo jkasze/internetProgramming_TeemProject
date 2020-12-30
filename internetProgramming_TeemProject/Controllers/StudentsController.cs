@@ -10,9 +10,11 @@ using internetProgramming_TeemProject.Entities;
 using internetProgramming_TeemProject.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Authorization;
 
 namespace internetProgramming_TeemProject.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/institute")]
     public class StudentsController : ControllerBase

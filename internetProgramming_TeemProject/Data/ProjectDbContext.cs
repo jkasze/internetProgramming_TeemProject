@@ -19,6 +19,7 @@ namespace internetProgramming_TeemProject.Data
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<StudentCourse> StudentCourses{ get; set; }
         public DbSet<Account> Accounts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -42,6 +43,16 @@ namespace internetProgramming_TeemProject.Data
                 .WithMany(x => x.Courses)
                 .HasForeignKey(x => x.Id)
                 .OnDelete(DeleteBehavior.SetNull);*/
+            modelBuilder.Entity<StudentCourse>()
+                .HasOne(x => x.Student)
+                .WithMany(x => x.StudentCourses)
+                .HasForeignKey(x => x.StudentId)
+                .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<StudentCourse>()
+                .HasOne(x => x.Course)
+                .WithMany(x => x.StudentCourses)
+                .HasForeignKey(x => x.CourseId)
+                .OnDelete(DeleteBehavior.SetNull);
             modelBuilder.Entity<Student>().Property(x => x.StudentName).HasMaxLength(4);
             modelBuilder.Entity<Student>().Property(x => x.StudentNum).HasMaxLength(8);
             //modelBuilder.Entity<Account>().HasKey(x=>x.Id);
@@ -122,11 +133,26 @@ namespace internetProgramming_TeemProject.Data
                     TeacherName = "任瀚宇",
                 }
             );
+            modelBuilder.Entity<StudentCourse>().HasData(
+     new StudentCourse
+     {
+         Id = Guid.Parse("a57d2b4e-6fd9-4b9a-912d-ab9902043612"),
+         CourseId = Guid.Parse("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"),
+         StudentId = Guid.Parse("ffa9e244-2743-43b4-8d62-b162700b78d7"),
+     },
+    new StudentCourse
+    {
+        Id = Guid.Parse("76e77dc8-dfb0-4cbb-9830-dc0ac3d5b98b"),
+        CourseId = Guid.Parse("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"),
+        StudentId = Guid.Parse("9011e45a-a408-bb72-50eb-d5ee66875dd3"),
+    }
+    );
             modelBuilder.Entity<Student>().HasData(
                 new Student
                 {
                     Id = Guid.Parse("ffa9e244-2743-43b4-8d62-b162700b78d7"),
                     InstituteId = Guid.Parse("5efc910b-2f45-43df-afee-620d40542853"),
+                    //StudentCourseId = Guid.Parse("a57d2b4e-6fd9-4b9a-912d-ab9902043612"),
                     StudentNum = 20180101,
                     StudentName = "封不觉",
                 },
@@ -134,6 +160,7 @@ namespace internetProgramming_TeemProject.Data
                 {
                     Id = Guid.Parse("e48f8f2f-22d6-cb6e-cdc2-4c92a09fdfcd"),
                     InstituteId = Guid.Parse("5efc910b-2f45-43df-afee-620d40542853"),
+                    
                     StudentNum = 20180102,
                     StudentName = "封不",
                 },
@@ -141,10 +168,12 @@ namespace internetProgramming_TeemProject.Data
                 {
                     Id = Guid.Parse("9011e45a-a408-bb72-50eb-d5ee66875dd3"),
                     InstituteId = Guid.Parse("5efc910b-2f45-43df-afee-620d40542853"),
+                    //StudentCourseId = Guid.Parse("76e77dc8-dfb0-4cbb-9830-dc0ac3d5b98b"),
                     StudentNum = 20180103,
                     StudentName = "封觉",
                 }
             );
+
             modelBuilder.Entity<Account>().HasData(
             new Account
             {
@@ -158,6 +187,7 @@ namespace internetProgramming_TeemProject.Data
                 new Course
                 {
                     Id = Guid.Parse("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"),
+                    //StudentCourseId = Guid.Parse("a57d2b4e-6fd9-4b9a-912d-ab9902043612"),
                     CourseName = "互联网程序设计",
                     CourseTime = CourseTime.FirstSemester,
                     StartTime = new DateTime(2020, 09, 01, 00, 00, 00),
@@ -177,6 +207,9 @@ namespace internetProgramming_TeemProject.Data
                 }
                
                 );
+
+            /**/
+
         }
     
     }

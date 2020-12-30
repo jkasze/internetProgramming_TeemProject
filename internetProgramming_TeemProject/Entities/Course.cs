@@ -13,7 +13,7 @@ namespace internetProgramming_TeemProject.Entities
     public class Course
     {
         public Guid Id { get; set; }
-       
+        //public Guid StudentCourseId { get; set; }
         //基本信息
         public string CourseName { get; set; }
         public DateTime StartTime { get; set; }
@@ -37,9 +37,9 @@ namespace internetProgramming_TeemProject.Entities
         public string ExInfor { get; set; }
         public DateTime ExStart { get; set; }
         public DateTime ExSubmit { get; set; }
-
+        //public StudentCourse StudentCourse { get; set; }
         //public Teacher teacher { get; set; }
         //public Student student { get; set; }
-
+        public ICollection<StudentCourse> StudentCourses { get; set; }
     }
 }

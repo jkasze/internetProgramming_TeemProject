@@ -120,6 +120,7 @@ namespace internetProgramming_TeemProject.Services
             return await _context.Institutes.FirstOrDefaultAsync(x => x.Id == instituteId);
         }
 
+
         public  Task<Account> GetTokenAsync(string username, string password) 
         {
             if(username == null)
@@ -153,6 +154,16 @@ namespace internetProgramming_TeemProject.Services
         public async Task<IEnumerable<Course>>GetCoursesAsync()
         {
             return await _context.Courses.ToListAsync();
+        }
+
+        public async Task<IEnumerable<StudentCourse>> GetCourseFromStudentAsync(Guid studentId)
+        {
+            if (studentId == Guid.Empty)
+            {
+                throw new ArgumentException(nameof(studentId));
+            }
+
+            return await _context.StudentCourses.Where(x => x.StudentId == studentId).ToListAsync();
         }
         public async Task<IEnumerable<Teacher>> GetAllTeachersAsync()
         {

@@ -15,6 +15,7 @@ namespace internetProgramming_TeemProject.Profiles
             CreateMap<StudentAddDto, Student>();
             CreateMap<Student, StudentUpdateDto>();
             CreateMap<StudentUpdateDto, Student>();
+            CreateMap<StudentCourse, StudentCourseDto>();
         }
     }
 }

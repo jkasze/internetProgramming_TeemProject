@@ -12,7 +12,7 @@ namespace internetProgramming_TeemProject.Entities
         public Guid InstituteId { get; set; }
 
         //public Guid StudentCourseId { get; set; }
-        public int StudentNum { get; set; }
+        public string StudentNum { get; set; }
         public string StudentName { get; set; }
         public Institute Institute { get; set; }
         //public ICollection<Course> Courses { get; set; }

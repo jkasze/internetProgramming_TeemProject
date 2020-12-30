@@ -101,7 +101,7 @@ namespace internetProgramming_TeemProject.Data
                 {
                     Id = Guid.Parse("ca268a19-0f39-4d8b-b8d6-5bace54f8027"),
                     InstituteId = Guid.Parse("bbdee09c-089b-4d30-bece-44df5923716c"),
-                    TeacherNum = 201401,
+                    TeacherNum = "201401",
                     TeacherIntroduction = "",
                     TeacherName = "何路",
                 },
@@ -109,7 +109,7 @@ namespace internetProgramming_TeemProject.Data
                 {
                     Id = Guid.Parse("7346d7ba-d17c-9014-05ae-fb0169ed0a13"),
                     InstituteId = Guid.Parse("bbdee09c-089b-4d30-bece-44df5923716c"),
-                    TeacherNum = 201402,
+                    TeacherNum = "201402",
                     TeacherIntroduction = "",
                     TeacherName = "耿国华",
                 },
@@ -117,14 +117,14 @@ namespace internetProgramming_TeemProject.Data
                 {
                     Id = Guid.Parse("494710f6-6202-fbe9-d827-1dafde50daa2"),
                     InstituteId = Guid.Parse("bbdee09c-089b-4d30-bece-44df5923716c"),
-                    TeacherNum = 201403,
+                    TeacherNum = "201403",
                     TeacherName = "徐彩霞",
                 },
                 new Teacher
                 {
                     Id = Guid.Parse("47b70abc-98b8-4fdc-b9fa-5dd6716f6e6b"),
                     InstituteId = Guid.Parse("5efc910b-2f45-43df-afee-620d40542853"),
-                    TeacherNum = 201501,
+                    TeacherNum = "201501",
                     TeacherIntroduction = "",
                     TeacherName = "王豪",
                 },
@@ -132,7 +132,7 @@ namespace internetProgramming_TeemProject.Data
                 {
                     Id = Guid.Parse("5d27fb1c-f235-e1ce-fe63-ae6e664a27fa"),
                     InstituteId = Guid.Parse("5efc910b-2f45-43df-afee-620d40542853"),
-                    TeacherNum = 201502,
+                    TeacherNum = "201502",
                     TeacherIntroduction = "",
                     TeacherName = "郭孟源",
                 },
@@ -140,7 +140,7 @@ namespace internetProgramming_TeemProject.Data
                 {
                     Id = Guid.Parse("2ea277d6-50cc-025e-0935-8646f06ba2bd"),
                     InstituteId = Guid.Parse("6fb600c1-9011-4fd7-9234-881379716440"),
-                    TeacherNum = 200001,
+                    TeacherNum = "200001",
                     TeacherIntroduction = "",
                     TeacherName = "任瀚宇",
                 }
@@ -179,7 +179,7 @@ namespace internetProgramming_TeemProject.Data
                     Id = Guid.Parse("ffa9e244-2743-43b4-8d62-b162700b78d7"),
                     InstituteId = Guid.Parse("5efc910b-2f45-43df-afee-620d40542853"),
                     //StudentCourseId = Guid.Parse("a57d2b4e-6fd9-4b9a-912d-ab9902043612"),
-                    StudentNum = 20180101,
+                    StudentNum = "20180101",
                     StudentName = "封不觉",
                 },
                 new Student
@@ -187,7 +187,7 @@ namespace internetProgramming_TeemProject.Data
                     Id = Guid.Parse("e48f8f2f-22d6-cb6e-cdc2-4c92a09fdfcd"),
                     InstituteId = Guid.Parse("5efc910b-2f45-43df-afee-620d40542853"),
                     
-                    StudentNum = 20180102,
+                    StudentNum = "20180102",
                     StudentName = "封不",
                 },
                 new Student
@@ -195,7 +195,7 @@ namespace internetProgramming_TeemProject.Data
                     Id = Guid.Parse("9011e45a-a408-bb72-50eb-d5ee66875dd3"),
                     InstituteId = Guid.Parse("5efc910b-2f45-43df-afee-620d40542853"),
                     //StudentCourseId = Guid.Parse("76e77dc8-dfb0-4cbb-9830-dc0ac3d5b98b"),
-                    StudentNum = 20180103,
+                    StudentNum = "20180103",
                     StudentName = "封觉",
                 }
             );

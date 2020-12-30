@@ -10,7 +10,7 @@ namespace internetProgramming_TeemProject.Entities
     {
         public Guid Id{ get; set; }
         public Guid InstituteId { get; set; }
-        public long TeacherNum { get; set; }
+        public string TeacherNum { get; set; }
         public string TeacherName { get; set; }
         public string TeacherIntroduction { get; set; }
         public Institute Institute { get; set; }

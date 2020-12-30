@@ -9,7 +9,7 @@ namespace internetProgramming_TeemProject.Models
     {
         public Guid Id { get; set; }
         public Guid InstituteId { get; set; }
-        public int StudentNum { get; set; }
+        public string StudentNum { get; set; }
         public string StudentName { get; set; }
     }
 }

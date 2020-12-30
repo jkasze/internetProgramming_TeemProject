@@ -16,7 +16,7 @@ GET api/institute/{instituteId}/teacher 用于获得某一学院所有老师的�
 
 GET api/institute/{instituteId}/teacher/{teacherId} 用于获得某一老师的信息
 
-GET api/course?q=工号或Guid 用于获得某一老师的开课信息（未实现）
+GET api/institute/teacher/{teacherId}/courses 用于获得某一老师的开课信息
 
 ###### 教务API
 
@@ -72,9 +72,13 @@ DELETE api/institute/{instituteId}/student/{studentId} 用于删除某个学院�
 
 ###### 学生API
 
-GET api/student?q=学号  用于通过学号获得学生所有信息。（未实现）
+GET api/institute/student/{studentNum}  用于通过学号获得学生所有信息。
+
+GET api/institute/student/{studentId}/courses  用于获得学生课程信息。
 
 ###### 教师API
+
+GET api/institute/teacher/{teacherNum} 通过老师工号获得老师信息。
 
 课程：
 
@@ -133,3 +137,16 @@ PATCH api/course/{courseId}/lab
 api/course/{courseId}/ex
 
 api/course/{courseId}/PPT 同理
+
+###### 权限控制
+
+POST api/token 参数为username，password，用于获得登录凭证。
+
+```json
+{
+    "username":"20181010",
+    "password":"20180101"
+}
+```
+
+token使用TYPE为Bearer Token的形式进行传输，未授权时返回401，授权时返回200	。 

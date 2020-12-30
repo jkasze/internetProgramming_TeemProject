@@ -15,11 +15,17 @@ namespace internetProgramming_TeemProject.Services
         
         Task<IEnumerable<TeacherCourse>> GetCourseFromTeacherAsync(Guid teacherId);
         Task<Institute> GetInstituteAsync(Guid instituteId);
+        Task<Student> GetStudentsUseNumAsync(string studentNum);
+        Task<Student> GetStudentNumAsync(string studentNum);
+        
+        Task<Teacher> GetTeacherNumAsync(string studentNum);
         Task<IEnumerable<Institute>> GetInstitutesAsync(IEnumerable<Guid> instituteIds);
         void AddInstitute(Institute institute);
         void UpdateInstitute(Institute institute);
         void DeleteInstitute(Institute institute);
         Task<bool> InstituteExistsAsync(Guid instituteId);
+        Task<bool> StudentNumExistsAsync(string studentNum);
+
         Task<IEnumerable<Teacher>> GetTeachersAsync(Guid instituteId);
         Task<Teacher> GetTeacherAsync(Guid instituteId, Guid teacherId);
         Task<Account> GetTokenAsync(string username, string password);

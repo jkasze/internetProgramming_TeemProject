@@ -71,6 +71,15 @@ namespace internetProgramming_TeemProject.Services
 
             return await _context.Institutes.AnyAsync(x => x.Id == instituteId);
         }
+        public async Task<bool> StudentNumExistsAsync(string studentNum)
+        {
+            if (studentNum == null)
+            {
+                throw new ArgumentNullException(nameof(studentNum));
+            }
+
+            return await _context.Students.AnyAsync(x => x.StudentNum == studentNum);
+        }
         public async Task<bool>CourseExistAsync(Guid courseId)
         {
             if(courseId == Guid.Empty)
@@ -120,6 +129,25 @@ namespace internetProgramming_TeemProject.Services
             return await _context.Institutes.FirstOrDefaultAsync(x => x.Id == instituteId);
         }
 
+        public async Task<Student> GetStudentNumAsync(string studentNum)
+        {
+            if (studentNum == "")
+            {
+                throw new ArgumentNullException(nameof(studentNum));
+            }
+
+            return await _context.Students.FirstOrDefaultAsync(x => x.StudentNum == studentNum);
+        }
+        
+        public async Task<Teacher> GetTeacherNumAsync(string teacherNum)
+        {
+            if (teacherNum == "")
+            {
+                throw new ArgumentNullException(nameof(teacherNum));
+            }
+
+            return await _context.Teachers.FirstOrDefaultAsync(x => x.TeacherNum == teacherNum);
+        }
 
         public  Task<Account> GetTokenAsync(string username, string password) 
         {
@@ -146,7 +174,15 @@ namespace internetProgramming_TeemProject.Services
 
             return await _context.Courses.FirstOrDefaultAsync(x => x.Id == courseId);
         }
+        public async Task<Student> GetStudentsUseNumAsync(string studentNum)
+        {
+            if(studentNum==null)
+            {
+                throw new ArgumentNullException(nameof(studentNum));
+            }
 
+            return await _context.Students.FirstOrDefaultAsync(x => x.StudentNum == studentNum);
+        }
         public async Task<IEnumerable<Institute>> GetInstitutesAsync()
         {
             return await _context.Institutes.ToListAsync();

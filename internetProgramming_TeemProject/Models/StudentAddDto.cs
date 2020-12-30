@@ -7,7 +7,7 @@ namespace internetProgramming_TeemProject.Models
 {
     public class StudentAddDto
     {
-        public int StudentNum { get; set; }
+        public string StudentNum { get; set; }
         public string StudentName { get; set; }
     }
 }

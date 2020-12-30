@@ -144,6 +144,7 @@ namespace internetProgramming_TeemProject.Controllers
 
             return Ok(studentDtos);  //OK() 返回状态码200
         }
+
         [HttpGet("student/{studentId}/courses")]
         public async Task<IActionResult>GetCourseFromStudent(Guid studentId)
         {
@@ -152,6 +153,20 @@ namespace internetProgramming_TeemProject.Controllers
             var CourseStudentDtos = _mapper.Map<IEnumerable<StudentCourseDto>>(courses);
 
             return Ok(CourseStudentDtos);
+        }
+
+        [HttpGet("student/{studentNum}")]
+        public async Task<ActionResult<StudentDto>>
+            GetStudentForInstitute(string studentNum)
+        {
+            var student = await _instituteRepository.GetStudentNumAsync(studentNum);
+            if (student == null)
+            {
+                return NotFound();
+            }
+            var studentDto = _mapper.Map<StudentDto>(student);
+
+            return Ok(studentDto);
         }
         [HttpOptions]
         public IActionResult GetStudentsOptions()

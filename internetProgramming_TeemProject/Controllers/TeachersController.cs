@@ -141,6 +141,20 @@ namespace internetProgramming_TeemProject.Controllers
 
             return Ok(teacherDtos);  //OK() 返回状态码200
         }
+        [HttpGet("teacher/{teacherNum}")]
+        public async Task<ActionResult<TeacherDto>>
+    GetTeacherForInstitute(string teacherNum)
+        {
+            var teacher = await _instituteRepository.GetTeacherNumAsync(teacherNum);
+            if (teacher == null)
+            {
+                return NotFound();
+            }
+            var teacherDto = _mapper.Map<TeacherDto>(teacher);
+
+            return Ok(teacherDto);
+        }
+        [AllowAnonymous]
         [HttpGet("teacher/{teacherId}/courses")]
         public async Task<IActionResult> GetCourseFromTeacher(Guid teacherId)
         {

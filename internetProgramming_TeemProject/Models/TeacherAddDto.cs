@@ -7,7 +7,7 @@ namespace internetProgramming_TeemProject.Models
 {
     public class TeacherAddDto
     {
-        public long TeacherNum { get; set; }
+        public string TeacherNum { get; set; }
         public string TeacherName { get; set; }
         public string TeacherIntroduction { get; set; }
     }

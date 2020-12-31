@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace internetProgramming_TeemProject.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/institute")]
     public class StudentsController : ControllerBase

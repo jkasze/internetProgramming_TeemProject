@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace internetProgramming_TeemProject.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/institute")] 
     public class TeachersController : ControllerBase
@@ -141,6 +141,7 @@ namespace internetProgramming_TeemProject.Controllers
 
             return Ok(teacherDtos);  //OK() 返回状态码200
         }
+
         [HttpGet("teacher/{teacherNum}")]
         public async Task<ActionResult<TeacherDto>>
     GetTeacherForInstitute(string teacherNum)

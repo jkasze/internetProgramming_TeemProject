@@ -27,7 +27,7 @@ namespace internetProgramming_TeemProject.Controllers
                                         throw new ArgumentNullException(nameof(instituteRepository));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetInstitutes()
         {
@@ -37,7 +37,7 @@ namespace internetProgramming_TeemProject.Controllers
 
             return Ok(instituteDtos);  //OK() 返回状态码200
         }
-
+        [AllowAnonymous]
         [HttpGet("{instituteId}", Name = nameof(GetInstitute))]  //还可用 [Route("{companyId}")]
         public async Task<ActionResult<InstituteDto>> GetInstitute(Guid instituteId)
         {

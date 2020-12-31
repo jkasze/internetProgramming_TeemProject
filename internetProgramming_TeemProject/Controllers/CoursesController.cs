@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace internetProgramming_TeemProject.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     [ApiController]
     [Route("api/course")] //还可用 [Route("api/[controller]")]
     public class coursesController : ControllerBase

@@ -281,6 +281,10 @@ namespace internetProgramming_TeemProject.Services
         {
 
         }
+        public void UpdatePassword(Account account)
+        {
+
+        }
         public void UpdateTeacher(Teacher teacher)
         {
             //无需显式地声明

@@ -72,7 +72,7 @@ namespace internetProgramming_TeemProject.Controllers
             return CreatedAtRoute(nameof(GetCourse), new { courseId = returnDto.Id }, returnDto);
         }
         [HttpPatch("{courseId}")]
-        public async Task<IActionResult> PartiallyUpdateCourse(
+        public async Task<IActionResult> PartiallyUpdateAccount(
             Guid courseId,
             JsonPatchDocument<CourseUpdateDto> patchDocument)
         {

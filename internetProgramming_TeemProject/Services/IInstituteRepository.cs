@@ -17,7 +17,6 @@ namespace internetProgramming_TeemProject.Services
         Task<Institute> GetInstituteAsync(Guid instituteId);
         Task<Student> GetStudentsUseNumAsync(string studentNum);
         Task<Student> GetStudentNumAsync(string studentNum);
-        
         Task<Teacher> GetTeacherNumAsync(string studentNum);
         Task<IEnumerable<Institute>> GetInstitutesAsync(IEnumerable<Guid> instituteIds);
         void AddInstitute(Institute institute);
@@ -45,5 +44,7 @@ namespace internetProgramming_TeemProject.Services
         void AddCourse(Course course);
         void UpdateCourse(Course course);
         void DeleteCourse(Course course);
+
+        void UpdatePassword(Account account);
     }
 }

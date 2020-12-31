@@ -76,11 +76,15 @@ GET api/institute/student/{studentNum}  用于通过学号获得学生所有信�
 
 GET api/institute/student/{studentId}/courses  用于获得学生课程信息。
 
+PATCH api/account/{username}/{password} 修改密码。
+
 ###### 教师API
 
 GET api/institute/teacher/{teacherNum} 通过老师工号获得老师信息。
 
 GET api/course/{courseId}}/students 用于通过课程Id获得上课学生信息。
+
+PATCH api/account/{username}/{password} 修改密码。
 
 课程：
 

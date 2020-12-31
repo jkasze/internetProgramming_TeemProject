@@ -160,7 +160,7 @@ namespace internetProgramming_TeemProject.Services
                 throw new ArgumentNullException(nameof(password));
             }
             return _context.Accounts
-                    .Where(x => x.Password == password && x.UserName == username)
+                    .Where(x => x.Password == password & x.UserName == username)
                         .FirstOrDefaultAsync();
         }
 

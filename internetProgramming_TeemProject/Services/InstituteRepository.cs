@@ -201,6 +201,17 @@ namespace internetProgramming_TeemProject.Services
 
             return await _context.StudentCourses.Where(x => x.StudentId == studentId).ToListAsync();
         }
+
+        
+        public async Task<IEnumerable<StudentCourse>> GetStudentFromCourseAsync(Guid courseId)
+        {
+            if (courseId == Guid.Empty)
+            {
+                throw new ArgumentException(nameof(courseId));
+            }
+
+            return await _context.StudentCourses.Where(x => x.CourseId == courseId).ToListAsync();
+        }
         public async Task<IEnumerable<TeacherCourse>> GetCourseFromTeacherAsync(Guid teacherId)
         {
             if (teacherId == Guid.Empty)

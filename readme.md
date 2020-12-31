@@ -80,6 +80,8 @@ GET api/institute/student/{studentId}/courses  用于获得学生课程信息。
 
 GET api/institute/teacher/{teacherNum} 通过老师工号获得老师信息。
 
+GET api/course/{courseId}}/students 用于通过课程Id获得上课学生信息。
+
 课程：
 
 GET api/course 用于获得全体课程列表

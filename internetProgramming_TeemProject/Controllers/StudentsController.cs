@@ -144,7 +144,7 @@ namespace internetProgramming_TeemProject.Controllers
 
             return Ok(studentDtos);  //OK() 返回状态码200
         }
-
+        [AllowAnonymous]
         [HttpGet("student/{studentId}/courses")]
         public async Task<IActionResult>GetCourseFromStudent(Guid studentId)
         {

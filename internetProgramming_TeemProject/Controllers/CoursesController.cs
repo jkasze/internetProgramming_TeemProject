@@ -50,6 +50,16 @@ namespace internetProgramming_TeemProject.Controllers
             }
             return Ok(_mapper.Map<CourseDto>(course));
         }
+        [AllowAnonymous]
+        [HttpGet("{courseId}/students")]
+        public async Task<IActionResult> GetStudentFromCourse(Guid courseId)
+        {
+            var students = await _courseRepository.GetStudentFromCourseAsync(courseId);
+
+            var CourseStudentDtos = _mapper.Map<IEnumerable<StudentCourseDto>>(students);
+
+            return Ok(CourseStudentDtos);
+        }
         [HttpPost]
         public async Task<ActionResult<CourseDto>> CreateCourse(CourseAddDto course)
         {
@@ -87,8 +97,7 @@ namespace internetProgramming_TeemProject.Controllers
 
             return NoContent();
         }
-
-
+        
         [HttpDelete("{courseId}")]
         public async Task<IActionResult> DeleteCourse(Guid courseId)
         {
@@ -185,6 +194,7 @@ namespace internetProgramming_TeemProject.Controllers
             }
             return Ok(_mapper.Map<CourseExDto>(course));
         }
+
         [HttpPatch]
         public async Task<IActionResult> PartiallyUpdateCourse(
             Guid courseId,
@@ -211,6 +221,7 @@ namespace internetProgramming_TeemProject.Controllers
 
             return NoContent();
         }
+
     }
     [ApiController]
     [Route("api/course/{courseId}/PPT")]
@@ -260,6 +271,8 @@ namespace internetProgramming_TeemProject.Controllers
 
             return NoContent();
         }
+
+
     }
 
 }

@@ -11,6 +11,9 @@ namespace internetProgramming_TeemProject.Entities
         public Guid StudentId { get; set; }
         public Guid CourseId { get; set; }
 
+        public string MainPoints { get; set; }
+        public string LabPoints { get; set; }
+        public string ExPoints { get; set; }
         public Student Student { get; set; }
         public Course Course { get; set; }
     }

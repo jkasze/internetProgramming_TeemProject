@@ -151,12 +151,18 @@ namespace internetProgramming_TeemProject.Data
          Id = Guid.Parse("a57d2b4e-6fd9-4b9a-912d-ab9902043612"),
          CourseId = Guid.Parse("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"),
          StudentId = Guid.Parse("ffa9e244-2743-43b4-8d62-b162700b78d7"),
+         MainPoints = "100",
+         LabPoints = "100",
+         ExPoints ="100"
      },
     new StudentCourse
     {
         Id = Guid.Parse("76e77dc8-dfb0-4cbb-9830-dc0ac3d5b98b"),
         CourseId = Guid.Parse("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"),
         StudentId = Guid.Parse("9011e45a-a408-bb72-50eb-d5ee66875dd3"),
+        MainPoints = "100",
+        LabPoints = "100",
+        ExPoints = "100"
     }
     );
             modelBuilder.Entity<TeacherCourse>().HasData(

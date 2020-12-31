@@ -39,9 +39,9 @@ namespace internetProgramming_TeemProject.Migrations
                         new
                         {
                             Id = new Guid("4741a63f-aad1-4a38-8ac9-32e11689c32b"),
-                            Password = "20180101",
+                            Password = "20181010",
                             Type = 0,
-                            UserName = "20181010"
+                            UserName = "20180101"
                         });
                 });
 
@@ -228,6 +228,15 @@ namespace internetProgramming_TeemProject.Migrations
                     b.Property<Guid>("CourseId")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("ExPoints")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LabPoints")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MainPoints")
+                        .HasColumnType("TEXT");
+
                     b.Property<Guid>("StudentId")
                         .HasColumnType("TEXT");
 
@@ -244,12 +253,18 @@ namespace internetProgramming_TeemProject.Migrations
                         {
                             Id = new Guid("a57d2b4e-6fd9-4b9a-912d-ab9902043612"),
                             CourseId = new Guid("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"),
+                            ExPoints = "100",
+                            LabPoints = "100",
+                            MainPoints = "100",
                             StudentId = new Guid("ffa9e244-2743-43b4-8d62-b162700b78d7")
                         },
                         new
                         {
                             Id = new Guid("76e77dc8-dfb0-4cbb-9830-dc0ac3d5b98b"),
                             CourseId = new Guid("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"),
+                            ExPoints = "100",
+                            LabPoints = "100",
+                            MainPoints = "100",
                             StudentId = new Guid("9011e45a-a408-bb72-50eb-d5ee66875dd3")
                         });
                 });

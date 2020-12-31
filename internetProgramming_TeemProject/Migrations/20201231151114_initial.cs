@@ -68,7 +68,7 @@ namespace internetProgramming_TeemProject.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     InstituteId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    StudentNum = table.Column<int>(type: "INTEGER", maxLength: 8, nullable: false),
+                    StudentNum = table.Column<string>(type: "TEXT", maxLength: 8, nullable: true),
                     StudentName = table.Column<string>(type: "TEXT", maxLength: 4, nullable: true)
                 },
                 constraints: table =>
@@ -88,7 +88,7 @@ namespace internetProgramming_TeemProject.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     InstituteId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    TeacherNum = table.Column<long>(type: "INTEGER", nullable: false),
+                    TeacherNum = table.Column<string>(type: "TEXT", nullable: true),
                     TeacherName = table.Column<string>(type: "TEXT", maxLength: 4, nullable: true),
                     TeacherIntroduction = table.Column<string>(type: "TEXT", nullable: true)
                 },
@@ -109,7 +109,10 @@ namespace internetProgramming_TeemProject.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     StudentId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    CourseId = table.Column<Guid>(type: "TEXT", nullable: false)
+                    CourseId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    MainPoints = table.Column<string>(type: "TEXT", nullable: true),
+                    LabPoints = table.Column<string>(type: "TEXT", nullable: true),
+                    ExPoints = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -119,13 +122,13 @@ namespace internetProgramming_TeemProject.Migrations
                         column: x => x.CourseId,
                         principalTable: "Courses",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_StudentCourses_Students_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Students",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -144,19 +147,19 @@ namespace internetProgramming_TeemProject.Migrations
                         column: x => x.CourseId,
                         principalTable: "Courses",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_TeacherCourses_Teachers_TeacherId",
                         column: x => x.TeacherId,
                         principalTable: "Teachers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.SetNull);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
                 table: "Accounts",
                 columns: new[] { "Id", "Password", "Type", "UserName" },
-                values: new object[] { new Guid("4741a63f-aad1-4a38-8ac9-32e11689c32b"), "20180101", 0, "20181010" });
+                values: new object[] { new Guid("4741a63f-aad1-4a38-8ac9-32e11689c32b"), "20181010", 0, "20180101" });
 
             migrationBuilder.InsertData(
                 table: "Courses",
@@ -181,57 +184,57 @@ namespace internetProgramming_TeemProject.Migrations
             migrationBuilder.InsertData(
                 table: "Students",
                 columns: new[] { "Id", "InstituteId", "StudentName", "StudentNum" },
-                values: new object[] { new Guid("ffa9e244-2743-43b4-8d62-b162700b78d7"), new Guid("5efc910b-2f45-43df-afee-620d40542853"), "封不觉", 20180101 });
+                values: new object[] { new Guid("ffa9e244-2743-43b4-8d62-b162700b78d7"), new Guid("5efc910b-2f45-43df-afee-620d40542853"), "封不觉", "20180101" });
 
             migrationBuilder.InsertData(
                 table: "Students",
                 columns: new[] { "Id", "InstituteId", "StudentName", "StudentNum" },
-                values: new object[] { new Guid("e48f8f2f-22d6-cb6e-cdc2-4c92a09fdfcd"), new Guid("5efc910b-2f45-43df-afee-620d40542853"), "封不", 20180102 });
+                values: new object[] { new Guid("e48f8f2f-22d6-cb6e-cdc2-4c92a09fdfcd"), new Guid("5efc910b-2f45-43df-afee-620d40542853"), "封不", "20180102" });
 
             migrationBuilder.InsertData(
                 table: "Students",
                 columns: new[] { "Id", "InstituteId", "StudentName", "StudentNum" },
-                values: new object[] { new Guid("9011e45a-a408-bb72-50eb-d5ee66875dd3"), new Guid("5efc910b-2f45-43df-afee-620d40542853"), "封觉", 20180103 });
+                values: new object[] { new Guid("9011e45a-a408-bb72-50eb-d5ee66875dd3"), new Guid("5efc910b-2f45-43df-afee-620d40542853"), "封觉", "20180103" });
 
             migrationBuilder.InsertData(
                 table: "Teachers",
                 columns: new[] { "Id", "InstituteId", "TeacherIntroduction", "TeacherName", "TeacherNum" },
-                values: new object[] { new Guid("ca268a19-0f39-4d8b-b8d6-5bace54f8027"), new Guid("bbdee09c-089b-4d30-bece-44df5923716c"), "", "何路", 201401L });
+                values: new object[] { new Guid("ca268a19-0f39-4d8b-b8d6-5bace54f8027"), new Guid("bbdee09c-089b-4d30-bece-44df5923716c"), "", "何路", "201401" });
 
             migrationBuilder.InsertData(
                 table: "Teachers",
                 columns: new[] { "Id", "InstituteId", "TeacherIntroduction", "TeacherName", "TeacherNum" },
-                values: new object[] { new Guid("7346d7ba-d17c-9014-05ae-fb0169ed0a13"), new Guid("bbdee09c-089b-4d30-bece-44df5923716c"), "", "耿国华", 201402L });
+                values: new object[] { new Guid("7346d7ba-d17c-9014-05ae-fb0169ed0a13"), new Guid("bbdee09c-089b-4d30-bece-44df5923716c"), "", "耿国华", "201402" });
 
             migrationBuilder.InsertData(
                 table: "Teachers",
                 columns: new[] { "Id", "InstituteId", "TeacherIntroduction", "TeacherName", "TeacherNum" },
-                values: new object[] { new Guid("494710f6-6202-fbe9-d827-1dafde50daa2"), new Guid("bbdee09c-089b-4d30-bece-44df5923716c"), null, "徐彩霞", 201403L });
+                values: new object[] { new Guid("494710f6-6202-fbe9-d827-1dafde50daa2"), new Guid("bbdee09c-089b-4d30-bece-44df5923716c"), null, "徐彩霞", "201403" });
 
             migrationBuilder.InsertData(
                 table: "Teachers",
                 columns: new[] { "Id", "InstituteId", "TeacherIntroduction", "TeacherName", "TeacherNum" },
-                values: new object[] { new Guid("2ea277d6-50cc-025e-0935-8646f06ba2bd"), new Guid("6fb600c1-9011-4fd7-9234-881379716440"), "", "任瀚宇", 200001L });
+                values: new object[] { new Guid("2ea277d6-50cc-025e-0935-8646f06ba2bd"), new Guid("6fb600c1-9011-4fd7-9234-881379716440"), "", "任瀚宇", "200001" });
 
             migrationBuilder.InsertData(
                 table: "Teachers",
                 columns: new[] { "Id", "InstituteId", "TeacherIntroduction", "TeacherName", "TeacherNum" },
-                values: new object[] { new Guid("47b70abc-98b8-4fdc-b9fa-5dd6716f6e6b"), new Guid("5efc910b-2f45-43df-afee-620d40542853"), "", "王豪", 201501L });
+                values: new object[] { new Guid("47b70abc-98b8-4fdc-b9fa-5dd6716f6e6b"), new Guid("5efc910b-2f45-43df-afee-620d40542853"), "", "王豪", "201501" });
 
             migrationBuilder.InsertData(
                 table: "Teachers",
                 columns: new[] { "Id", "InstituteId", "TeacherIntroduction", "TeacherName", "TeacherNum" },
-                values: new object[] { new Guid("5d27fb1c-f235-e1ce-fe63-ae6e664a27fa"), new Guid("5efc910b-2f45-43df-afee-620d40542853"), "", "郭孟源", 201502L });
+                values: new object[] { new Guid("5d27fb1c-f235-e1ce-fe63-ae6e664a27fa"), new Guid("5efc910b-2f45-43df-afee-620d40542853"), "", "郭孟源", "201502" });
 
             migrationBuilder.InsertData(
                 table: "StudentCourses",
-                columns: new[] { "Id", "CourseId", "StudentId" },
-                values: new object[] { new Guid("a57d2b4e-6fd9-4b9a-912d-ab9902043612"), new Guid("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"), new Guid("ffa9e244-2743-43b4-8d62-b162700b78d7") });
+                columns: new[] { "Id", "CourseId", "ExPoints", "LabPoints", "MainPoints", "StudentId" },
+                values: new object[] { new Guid("a57d2b4e-6fd9-4b9a-912d-ab9902043612"), new Guid("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"), "100", "100", "100", new Guid("ffa9e244-2743-43b4-8d62-b162700b78d7") });
 
             migrationBuilder.InsertData(
                 table: "StudentCourses",
-                columns: new[] { "Id", "CourseId", "StudentId" },
-                values: new object[] { new Guid("76e77dc8-dfb0-4cbb-9830-dc0ac3d5b98b"), new Guid("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"), new Guid("9011e45a-a408-bb72-50eb-d5ee66875dd3") });
+                columns: new[] { "Id", "CourseId", "ExPoints", "LabPoints", "MainPoints", "StudentId" },
+                values: new object[] { new Guid("76e77dc8-dfb0-4cbb-9830-dc0ac3d5b98b"), new Guid("ef59ce64-c4e7-458d-9b88-fec5a07b14a8"), "100", "100", "100", new Guid("9011e45a-a408-bb72-50eb-d5ee66875dd3") });
 
             migrationBuilder.InsertData(
                 table: "TeacherCourses",

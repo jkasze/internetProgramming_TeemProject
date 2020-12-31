@@ -12,7 +12,7 @@ namespace internetProgramming_TeemProject.Services
         Task<IEnumerable<Teacher>> GetAllTeachersAsync();
         Task<IEnumerable<Student>> GetAllStudentsAsync();
         Task<IEnumerable<StudentCourse>> GetCourseFromStudentAsync(Guid studentId);
-        
+        Task<IEnumerable<StudentCourse>> GetStudentFromCourseAsync(Guid courseId);
         Task<IEnumerable<TeacherCourse>> GetCourseFromTeacherAsync(Guid teacherId);
         Task<Institute> GetInstituteAsync(Guid instituteId);
         Task<Student> GetStudentsUseNumAsync(string studentNum);

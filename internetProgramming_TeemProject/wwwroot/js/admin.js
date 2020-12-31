@@ -1,6 +1,7 @@
 ﻿const instituteUrl = "/api/institute";
 const teacehrUrl = "/api/institute/allteacher";
 const studentUrl = "/api/institute/allstudent";
+let key = "Bearer " + window.localStorage.getItem("key");
 
 
 //从后台获取学院介绍信息
@@ -13,14 +14,22 @@ async function getInsitute() {
 
 //从后台获取教师信息
 async function getTeacehr(){
-    const res = await fetch(teacehrUrl);
+    const res = await fetch(teacehrUrl,{
+        headers : {
+            Authorization : key
+        }
+    });
     const data = res.json();
     return data;
 }
 
 //从后台获取学生信息
 async function getStudent(){
-    const res = await fetch(studentUrl);
+const res = await fetch(studentUrl,{
+    headers : {
+        Authorization : key
+    }
+    });
     const data = res.json();
     return data;
 }
@@ -54,7 +63,8 @@ async function updateInstituce(){
         method: 'POST',
         headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization' : key
         },
         body:JSON.stringify(item)
     })
@@ -246,7 +256,8 @@ async function addTeacher(){
         method: 'POST',
         headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization' : key
         },
         body:JSON.stringify(item)
     })
@@ -289,7 +300,8 @@ async function addStudent(){
         method: 'POST',
         headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization' : key
         },
         body:JSON.stringify(item)
     })
@@ -347,7 +359,8 @@ async function updateTeacher(){
         method : "PATCH",
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization' : key
           },
         body: JSON.stringify(item)
     })
@@ -391,7 +404,8 @@ async function updateStudent(){
         method : "PATCH",
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization' : key
           },
         body: JSON.stringify(item)
     })
@@ -405,7 +419,10 @@ async function updateStudent(){
 async function deleteTeacher(fatherId, id){
     const url = `/api/institute/${fatherId}/teacher/${id}`;
     fetch(url,{
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            'Authorization' : key
+        }
     })
     .then(() => displayTeacher())
     .catch(error => console.error("Unable to delete teacher.", error));
@@ -415,7 +432,10 @@ async function deleteTeacher(fatherId, id){
 async function  deleteStudent(fatherId, id){
     const url = `/api/institute/${fatherId}/student/${id}`;
     fetch(url,{
-        method : "DELETE"
+        method : "DELETE",
+        headers: {
+            'Authorization' : key
+        }
     })
     .then(() => displayStudent())
     .catch(error => console.error("Unable to delete student.", error))

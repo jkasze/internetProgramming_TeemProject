@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>教师</title>
 </head>
 <body>
-    
+    <div class="course">
+        <table>
+            <tr>
+                <th>课程名称</th>
+                <th>教师</th>
+                <th>开始时间</th>
+                <th>课时</th>
+                <th>理论课时</th>
+                <th>实验课时</th>
+                <th>课程信息</th>
+            </tr>
+            <tbody id="courseTable"></tbody>
+        </table>
+        <form method="POST" action="javascript: void(0)" onsubmit="addCourse()">
+            <input type="text" id="courseName" placeholder="课程名称">
+            <select id="selectTeacher"></select>
+            <input type="text" id="courseStartTime" placeholder="开始时间">
+            <input type="text" id="">
+
+        </form>
+    </div>
 </body>
 </html>

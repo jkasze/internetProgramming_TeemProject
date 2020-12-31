@@ -1,12 +1,50 @@
-﻿function getFileContent(){
-    var reader = new FileReader();
+﻿//获取学号
+const num = window.localStorage.getItem("num");
+//获取token验证字段
+const key = "Bearer " + window.localStorage.getItem("key");
 
-    var files = document.getElementById("fileInput").files;
-    reader.readAsDataURL(files[0]);	/*这里只有一个文件*/
-
-    /*当文件读取完成后*/
-    reader.onload=function(){
-        /*显示图片*/
-        document.getElementById("imgShower").src = reader.result;
-    }
+//通过学号获取个人信息
+async function getStudent(){
+    let res = await fetch(`api/institute/student/${num}`,{
+        headers : {
+            Authorization : key
+        }
+    });
+    let data = res.json();
+    return data;
 }
+
+async function getCourse(id){
+    let res = await fetch(`api/institute/student/${id}/courses`,{
+        headers : {
+            Authorization : key
+        }
+    });
+    let data = res.json();
+    return data;
+}
+
+async function displayStudent(){
+    let studentData = await getStudent();
+    let course = await getCourse(studentData.id);
+    const welcome = document.getElementById("welcome");
+    welcome.innerHTML = "";
+    welcome.innerHTML = `welcome ${studentData.studentNum} ${studentData.studentName}`;
+    
+    /*
+    course.foreach(Element => {
+
+    })
+    */
+}
+
+//展示改密码界面
+function displayPasswprd(){
+    document.getElementById("password").style.display = 'block';
+}
+
+function closeInput(){
+    document.getElementById("password").style.display = 'none';
+}
+
+displayStudent();

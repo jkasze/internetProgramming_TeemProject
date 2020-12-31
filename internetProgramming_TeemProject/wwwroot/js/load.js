@@ -5,16 +5,15 @@ const identity =  document.getElementsByName("identity");
 const buttonInstitute = document.getElementById("institute");
 
 
-const uri = "";
+const uri = "api/token";
 
-//在提交时将数据传输到后端api，通过响应状态判断账号是否存在
-form.addEventListener("submit",(Event)=>{
+
+async function getKeyValue(){
     var value;
     
     //判断是否符合账号规定
     if(check(userid,password) != true){
-        Event.preventDefault();
-        return;
+        return false;
     }
 
     //获取选取的身份
@@ -25,29 +24,30 @@ form.addEventListener("submit",(Event)=>{
     }
 
     const item = {
-        AccountId: parseInt(userid.value,10),
-        Password: password.value.toString().trim(),
-        Type: value.trim(),
+        username: userid.value.trim(),
+        password: password.value.toString().trim(),
     }
-    
+
     fetch(uri,{
         method: 'POST',
         headers: {
-            'Accept': 'application/json',
+            'Accept': '*/*',
             'Content-Type': 'application/json'
             },
         body: JSON.stringify(item)
-    }).then((response)=>{
-        if(response.status == 200){
-            window.location.href = value+".html?"+ "id="+userid.value;
-        }
-        else{
-            alert("账号或密码输入错误，请重试或注册!")
-        }
     })
-    .catch(error => console.error('Unable to check account', error));
-    Event.preventDefault();
-})
+    .then(response => response.text())
+    .then(data => {
+        console.log(data);
+        window.localStorage.setItem("key",data.toString());
+        window.sessionStorage.setItem("key",data.toString());
+        window.localStorage.setItem("num",userid.value);
+        window.sessionStorage.setItem("num",userid.value);
+    })
+    .then(() => window.location.href = value + ".html");
+    
+}
+
 
 function check(id, pwd){
     //账号为空
@@ -67,8 +67,3 @@ function check(id, pwd){
     }
     return true;
 }
-
-//跳转到注册页面
-buttonInstitute.addEventListener("click",(Event)=>{
-    window.location.href = "institute.html";
-})

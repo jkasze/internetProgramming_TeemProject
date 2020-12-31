@@ -204,8 +204,8 @@ namespace internetProgramming_TeemProject.Data
             new Account
             {
                 Id = Guid.Parse("4741a63f-aad1-4a38-8ac9-32e11689c32b"),
-                UserName = "20181010",
-                Password = "20180101",
+                UserName = "20180101",
+                Password = "20181010",
                 Type = AccountType.student,
             });
 

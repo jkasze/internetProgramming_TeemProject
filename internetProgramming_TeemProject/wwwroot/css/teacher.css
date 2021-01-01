@@ -1,1 +1,7 @@
-﻿
+﻿#password{
+    display: none;
+}
+
+#edit_course{
+    display: none;
+}

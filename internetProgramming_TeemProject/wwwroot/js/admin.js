@@ -355,7 +355,7 @@ async function updateTeacher(){
         }
     ]
 
-    fetch(`/api/institute/${fatherId.value}/teacher/${id.value}`,{
+    fetch(`api/institute/${fatherId.value}/teacher/${id.value}`,{
         method : "PATCH",
         headers: {
             'Accept': 'application/json',

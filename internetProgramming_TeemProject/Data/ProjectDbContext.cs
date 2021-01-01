@@ -214,7 +214,15 @@ namespace internetProgramming_TeemProject.Data
                 UserName = "20180101",
                 Password = "20181010",
                 Type = AccountType.student,
-            });
+            },
+            new Account
+            {
+                Id = Guid.Parse("4741a63f-aad1-4a38-8ac9-32e11689c32c"),
+                UserName = "201401",
+                Password = "201401",
+                Type = AccountType.teacher,
+            }
+            );
 
             modelBuilder.Entity<Course>().HasData(
                 new Course

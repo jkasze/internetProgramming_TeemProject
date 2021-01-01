@@ -236,9 +236,12 @@ namespace internetProgramming_TeemProject.Data
                     ExInfor = "",
                     ExStart = new DateTime(),
                     ExSubmit = new DateTime(),
-                }
+                
                
-                );
+                });
+
+
+                
 
             /**/
 

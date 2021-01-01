@@ -2,7 +2,7 @@
     color: white;
 }
 body{
-    background-color: #1c4f82;
+    background-color: #f8f8f8f5;
 }
 #institutes{
     padding:20px;
@@ -18,7 +18,7 @@ body{
     padding: 20px 50px;
     border-radius: 30px;
     border: black solid 5px;
-    background-color: midnightblue;
+    background-color: #310e81f5;
     margin-bottom: 50px;
     border-style: outset;
 }

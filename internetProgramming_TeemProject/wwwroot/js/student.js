@@ -133,7 +133,7 @@ async function updatePassword(){
         body : JSON.stringify(item)
     })
     .then((Response) => {
-        if(Response.status == 200){
+        if(Response.status == 204){
             alert("修改成功");
         }
         else{

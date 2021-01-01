@@ -91,6 +91,17 @@ namespace internetProgramming_TeemProject
                 {
                     app.UseDeveloperExceptionPage();
                 }
+                else
+                {
+                    app.UseExceptionHandler(appBuilder =>
+                    {
+                        appBuilder.Run(async context =>
+                        {
+                            context.Response.StatusCode = 500;
+                            await context.Response.WriteAsync("Unexpected Error!");
+                        });
+                    });
+                }
 
 
                 /*app.UseSwagger();

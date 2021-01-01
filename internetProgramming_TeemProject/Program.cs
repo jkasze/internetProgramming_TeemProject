@@ -23,9 +23,10 @@ namespace internetProgramming_TeemProject
             {
                 try
                 {
-                    var dbContext = scope.ServiceProvider.GetService<ProjectDbContext>();
-                    dbContext.Database.EnsureDeleted();
-                    dbContext.Database.Migrate();
+                    //将数据库由开发转入生产环境，注释掉开发使用的迁移库
+                    //var dbContext = scope.ServiceProvider.GetService<ProjectDbContext>();
+                    //dbContext.Database.EnsureDeleted();
+                    //dbContext.Database.Migrate();
                 }
                 catch (Exception ex)
                 {

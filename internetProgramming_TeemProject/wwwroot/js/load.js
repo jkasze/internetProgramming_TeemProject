@@ -43,6 +43,8 @@ async function getKeyValue(){
         window.sessionStorage.setItem("key",data.toString());
         window.localStorage.setItem("num",userid.value);
         window.sessionStorage.setItem("num",userid.value);
+        window.localStorage.setItem("password",password.value);
+        window.sessionStorage.setItem("password",password.value);
     })
     .then(() => window.location.href = value + ".html");
     

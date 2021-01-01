@@ -68,4 +68,8 @@ async function displayInstitute(){
     });
 }
 
+//跳转到登录界面
+function gotoload(){
+    window.location.href ="load.html";
+}
 displayInstitute();

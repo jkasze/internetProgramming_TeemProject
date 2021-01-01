@@ -110,7 +110,7 @@ namespace internetProgramming_TeemProject.Data
                     Id = Guid.Parse("7346d7ba-d17c-9014-05ae-fb0169ed0a13"),
                     InstituteId = Guid.Parse("bbdee09c-089b-4d30-bece-44df5923716c"),
                     TeacherNum = "201402",
-                    TeacherIntroduction = "",
+                    TeacherIntroduction = "西北大学信息科学与技术学院副院长，陕西省计算机学会副理事长，陕西省计算机教育学会副理事长，全国高等院校计算机基础教育研究会副会长",
                     TeacherName = "耿国华",
                 },
                 new Teacher
@@ -118,6 +118,7 @@ namespace internetProgramming_TeemProject.Data
                     Id = Guid.Parse("494710f6-6202-fbe9-d827-1dafde50daa2"),
                     InstituteId = Guid.Parse("bbdee09c-089b-4d30-bece-44df5923716c"),
                     TeacherNum = "201403",
+                    TeacherIntroduction = "",
                     TeacherName = "徐彩霞",
                 },
                 new Teacher
@@ -236,9 +237,12 @@ namespace internetProgramming_TeemProject.Data
                     ExInfor = "",
                     ExStart = new DateTime(),
                     ExSubmit = new DateTime(),
-                }
+                
                
-                );
+                });
+
+
+                
 
             /**/
 

@@ -9,8 +9,8 @@ using internetProgramming_TeemProject.Data;
 namespace internetProgramming_TeemProject.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    [Migration("20201231151114_initial")]
-    partial class initial
+    [Migration("20210101100847_a")]
+    partial class a
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -397,13 +397,13 @@ namespace internetProgramming_TeemProject.Migrations
                     b.HasOne("internetProgramming_TeemProject.Entities.Course", "Course")
                         .WithMany("StudentCourses")
                         .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("internetProgramming_TeemProject.Entities.Student", "Student")
                         .WithMany("StudentCourses")
                         .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Course");
@@ -427,13 +427,13 @@ namespace internetProgramming_TeemProject.Migrations
                     b.HasOne("internetProgramming_TeemProject.Entities.Course", "Course")
                         .WithMany("TeacherCourses")
                         .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("internetProgramming_TeemProject.Entities.Teacher", "Teacher")
                         .WithMany("TeacherCourses")
                         .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Course");

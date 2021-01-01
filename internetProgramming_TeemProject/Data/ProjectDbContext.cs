@@ -48,23 +48,23 @@ namespace internetProgramming_TeemProject.Data
                 .HasOne(x => x.Student)
                 .WithMany(x => x.StudentCourses)
                 .HasForeignKey(x => x.StudentId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<StudentCourse>()
                 .HasOne(x => x.Course)
                 .WithMany(x => x.StudentCourses)
                 .HasForeignKey(x => x.CourseId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<TeacherCourse>()
                 .HasOne(x => x.Course)
                 .WithMany(x => x.TeacherCourses)
                 .HasForeignKey(x => x.CourseId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<TeacherCourse>()
                 .HasOne(x => x.Teacher)
                 .WithMany(x => x.TeacherCourses)
                 .HasForeignKey(x => x.TeacherId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<Student>().Property(x => x.StudentName).HasMaxLength(4);
             modelBuilder.Entity<Student>().Property(x => x.StudentNum).HasMaxLength(8);
             //modelBuilder.Entity<Account>().HasKey(x=>x.Id);

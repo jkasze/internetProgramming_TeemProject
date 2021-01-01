@@ -111,6 +111,7 @@ async function updatePassword(){
         alert("密码不能为空！");
         return false;
     }
+    //验证两次输入的密码是否一致
     else if(password1.value != password2.value){
         alert("请保持两次输入的密码一致" + password2.nodeValue);
         return false;
@@ -132,6 +133,7 @@ async function updatePassword(){
           },
         body : JSON.stringify(item)
     })
+    //根据返回值判断修改是否成功
     .then((Response) => {
         if(Response.status == 204){
             alert("修改成功");

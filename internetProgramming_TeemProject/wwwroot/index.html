@@ -1,69 +1,18 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="zh-cn">
 <head>
-    <meta charset="utf-8" />
-    <title>教务管理系统</title>
-    <link rel="stylesheet" type="text/css" href="css/indexStyle.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/institute.css" rel="stylesheet">
+    <title>学院</title>
 </head>
 <body>
-    <header>
-        <a href="https://www.nwu.edu.cn/index.htm"><img src="resource/nwu_logo.png" height="90" width="351" ></a>
-        <span>教务管理系统</span>
-        <br/><br/>
-      </header>
-    <button class="cta-btn" id="open">登录</button>
-    <div class="modal-container" id="modal">
-        <div class="modal">
-          <button class="close-btn" id="close">
-          </button>
-          <div class="modal-header">
-            <h3>登录</h3>
-          </div>
-          <div class="modal-content">
-            <form class="modal-form" action="POST">
-              <div>
-                <label for="name">学号</label>
-                <input
-                  type="text"
-                  id="name"
-                  placeholder="输入学号"
-                  class="form-input"
-                />
-              </div>
-              <div>
-                <label for="password">密码</label>
-                <input
-                  type="password"
-                  id="password"
-                  placeholder="输入密码"
-                  class="form-input"
-                />
-                  <div style="text-align: center">
-                      <input type="submit" value="登录" class="submit-btn" />
-                  </div>
-              </div>
-            </form>
-          </div>
-        </div>
+    <button onclick="gotoload()">登录</button>
+    <div id="institutes">
     </div>
-    <div class="filter-container">
-      <input
-        type="text"
-        id="filter"
-        class="filter"
-        placeholder="输入查找学院"
-      />
-
-    </div>
-
-    <div id="posts-container"></div>
-
-    <div class="loader">
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-    </div>
-    <br/><br/>
-    <script src="js/indexJs.js"></script>
+    
+    <script src="js/institute.js"></script>
+    <script type="text/javascript">
+    </script>
 </body>
 </html>

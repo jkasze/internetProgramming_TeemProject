@@ -3,29 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/teacher.css" rel="stylesheet" type="text/css">
     <title>教师</title>
 </head>
 <body>
     <div class="course">
+        <h2 id="welcome"></h2>
         <table>
             <tr>
                 <th>课程名称</th>
-                <th>教师</th>
                 <th>开始时间</th>
-                <th>课时</th>
                 <th>理论课时</th>
                 <th>实验课时</th>
                 <th>课程信息</th>
+                <th>编辑课程</th>
             </tr>
             <tbody id="courseTable"></tbody>
         </table>
         <form method="POST" action="javascript: void(0)" onsubmit="addCourse()">
             <input type="text" id="courseName" placeholder="课程名称">
-            <select id="selectTeacher"></select>
-            <input type="text" id="courseStartTime" placeholder="开始时间">
-            <input type="text" id="">
+            <input type="text" id="theoryPeriod" placeholder="理论课时">
+            <input type="text" id="labPeriod" placeholder="实验课时">
+            <input type="text" id="information" placeholder="课程信息">
+            <input type="submit" value="添加课程">
+        </form>
+        <div id="edit_course">
+            <h3>编辑课程</h3>
+            <form method="POST" action="javascript:void(0);" onsubmit="updateCourse()">
+                <input type="hidden" id="courseId">
+                <input type="text" id="edit_courseName">
+                <input type="text" id="edit_theoryPeriod">
+                <input type="text" id="edit_labPeriod">
+                <input type="text" id="edit_information">
+                <input type="submit"value="更改">
+                <a onclick="closeEditInput()" aria-label="Close">&#10006;</a>
+            </form>
+        </div>
+        <button onclick="displayPasswprd()">更改密码</button>
+    </div>
+    
 
+    <div id="password">
+        <form id="edit_password" action="javascript:void(0)" onsubmit="updatePassword()">
+            <input type="text" id="newpassword1" placeholder="新密码">
+            <input type="text" id="newpassword2" placeholder="请再次输入">
+            <input type="submit" value="确认">
+            <button type="button" onclick="closeInput()">&#10006;</button>
         </form>
     </div>
+    <script src="js/teacher.js"></script>
 </body>
 </html>

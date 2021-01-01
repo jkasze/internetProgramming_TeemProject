@@ -15,6 +15,7 @@ async function getStudent(){
     return data;
 }
 
+//通过学号获取学生选课信息
 async function getCourse(id){
     let res = await fetch(`api/institute/student/${id}/courses`,{
         headers : {

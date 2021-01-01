@@ -150,8 +150,9 @@ POST api/token 参数为username，password，用于获得登录凭证。
 
 ```json
 {
-    "username":"20181010",
-    "password":"20180101"
+    "username":"201401",
+    "password":"201401",
+    "type":1
 }
 ```
 

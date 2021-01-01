@@ -1,3 +1,54 @@
-﻿#password{
-    display: none;
+#course{
+
+}
+#password{
+    width: 100%;
+    height:20px;   /* footer的高度一定要是固定值*/
+    position:absolute;
+    bottom:780px;
+    left:0px;
+
+}
+*{
+    color: white;
+
+}
+body{
+    background-color: #1c4f82;
+    position: absolute;
+    top: 200px;
+    left: 150px;
+    right: 10px;
+    bottom: 10px;
+    margin: auto;
+    width: 1500px;
+    height: 1000px;
+}
+
+#welcome{
+    color: white;
+
+}
+input{
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 8px 5px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Microsoft soft";
+    color: black;
+}
+button,input[type="submit"]{
+    background-color: #4CAF50;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+
+    font-size: 5px;
+}
+th,td{
+    padding: 5px 15px;
+    text-align: center;
+    border: black solid 5px;
 }

@@ -27,7 +27,8 @@ namespace internetProgramming_TeemProject.Services
 
         Task<IEnumerable<Teacher>> GetTeachersAsync(Guid instituteId);
         Task<Teacher> GetTeacherAsync(Guid instituteId, Guid teacherId);
-        Task<Account> GetTokenAsync(string username, string password);
+        Task<Account> GetTokenAsync(string username, string password, AccountType type);
+        Task<Account> GetAccountAsync(string username, string password);
         void AddTeacher(Guid instituteId, Teacher teacher);
         void UpdateTeacher(Teacher teacher);
         void DeleteTeacher(Teacher teacher);

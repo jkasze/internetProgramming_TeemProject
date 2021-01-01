@@ -148,8 +148,21 @@ namespace internetProgramming_TeemProject.Services
 
             return await _context.Teachers.FirstOrDefaultAsync(x => x.TeacherNum == teacherNum);
         }
-
-        public  Task<Account> GetTokenAsync(string username, string password) 
+        public Task<Account> GetAccountAsync(string username, string password)
+        {
+            if (username == null)
+            {
+                throw new ArgumentNullException(nameof(username));
+            }
+            if (password == null)
+            {
+                throw new ArgumentNullException(nameof(password));
+            }
+            return _context.Accounts
+                    .Where(x => ((x.Password == password) && (x.UserName == username)))
+                        .FirstOrDefaultAsync();
+        }
+        public  Task<Account> GetTokenAsync(string username, string password, AccountType type) 
         {
             if(username == null)
             {
@@ -159,10 +172,15 @@ namespace internetProgramming_TeemProject.Services
             {
                 throw new ArgumentNullException(nameof(password));
             }
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
             return _context.Accounts
-                    .Where(x => x.Password == password & x.UserName == username)
+                    .Where(x => ((x.Password == password) && (x.UserName == username) && (x.Type == type)))
                         .FirstOrDefaultAsync();
         }
+
 
         public async Task<Course> GetCourseAsync(Guid courseId)
         {

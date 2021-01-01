@@ -34,7 +34,7 @@ namespace internetProgramming_TeemProject.Controllers
                     string password,
                     JsonPatchDocument<AccountUpdateDto> patchDocument)
         {
-            var accountEntity = await _accountRepository.GetTokenAsync(username,password);
+            var accountEntity = await _accountRepository.GetAccountAsync(username,password);
 
             if (accountEntity == null)
             {

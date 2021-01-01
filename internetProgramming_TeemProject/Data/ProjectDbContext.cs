@@ -212,9 +212,24 @@ namespace internetProgramming_TeemProject.Data
             {
                 Id = Guid.Parse("4741a63f-aad1-4a38-8ac9-32e11689c32b"),
                 UserName = "20180101",
-                Password = "20181010",
+                Password = "20180101",
                 Type = AccountType.student,
-            });
+            },
+            new Account
+            {
+                Id = Guid.Parse("751b70ba-e874-48aa-a112-318be91dcf20"),
+                UserName = "admin",
+                Password = "admin",
+                Type = AccountType.admin,
+            },
+            new Account
+            {
+                Id = Guid.Parse("01dc7bc9-0654-42df-8a15-bef54aa117d6"),
+                UserName = "201401",
+                Password = "201401",
+                Type = AccountType.teacher,
+            }
+            );
 
             modelBuilder.Entity<Course>().HasData(
                 new Course

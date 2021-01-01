@@ -1,4 +1,5 @@
-﻿using internetProgramming_TeemProject.Models;
+﻿using internetProgramming_TeemProject.Entities;
+using internetProgramming_TeemProject.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
@@ -25,14 +26,18 @@ namespace internetProgramming_TeemProject.Services
         [JsonProperty("password")]
         public string Password { get; set; }
 
+        [Required]
+        [JsonProperty("type")]
+        public AccountType Type { get; set; }
+
         /// <summary>
         /// token认证服务
         /// </summary>
         public class TokenAuthenticationService : IAuthenticateService
         {
             private readonly IUserService _userService;
-            private readonly TokenManagement _tokenManagement;
-            public TokenAuthenticationService(IUserService userService, IOptions<TokenManagement> tokenManagement)
+            private readonly Models.TokenManagement _tokenManagement;
+            public TokenAuthenticationService(IUserService userService, IOptions<Models.TokenManagement> tokenManagement)
             {
                 _userService = userService;
                 _tokenManagement = tokenManagement.Value;

@@ -32,7 +32,9 @@ namespace internetProgramming_TeemProject.Controllers
             {
                 return BadRequest("Invalid Request");
             }
-            if (_instituteRepository.GetTokenAsync(request.Username, request.Password) != null)
+            var Entity = _instituteRepository.GetTokenAsync(request.Username, request.Password, request.Type).Result;
+
+            if (Entity != null)
             {
                 string token;
                 if (_authService.IsAuthenticated(request, out token))

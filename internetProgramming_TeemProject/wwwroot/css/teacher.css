@@ -5,3 +5,36 @@
 #edit_course{
     display: none;
 }
+body{
+    background-color: #f8f8f8f5;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding-bottom: 100px;
+}
+input{
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 14px;
+}
+button,input[type="submit"]{
+    background-color: #1c4f82;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 5px;
+}
+th,td{
+    padding: 10px 20px;
+
+}
+#password{
+    border: #1c4f82 solid 5px;
+    padding: 20px 20px;
+    border-radius: 20px;
+}

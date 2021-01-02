@@ -10,7 +10,7 @@ const uri = "api/token";
 
 async function getKeyValue(){
     var value;
-    
+    var href;
     //判断是否符合账号规定
     if(check(userid,password) != true){
         return false;
@@ -20,12 +20,14 @@ async function getKeyValue(){
     for(let i = 0;i < identity.length; i++){
         if(identity[i].checked == true){
             value = identity[i].value;
+            href = identity[i].id;
         }
     }
 
     const item = {
         username: userid.value.trim(),
         password: password.value.toString().trim(),
+        type : value
     }
 
     fetch(uri,{
@@ -46,7 +48,8 @@ async function getKeyValue(){
         window.localStorage.setItem("password",password.value);
         window.sessionStorage.setItem("password",password.value);
     })
-    .then(() => window.location.href = value + ".html");
+    .then(() => window.location.href = href + ".html")
+    .catch(error => alert("请检查账号或密码"));
     
 }
 

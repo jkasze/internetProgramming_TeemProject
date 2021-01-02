@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace internetProgramming_TeemProject.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/account")] //还可用 [Route("api/[controller]")]
     public class AccountController : ControllerBase

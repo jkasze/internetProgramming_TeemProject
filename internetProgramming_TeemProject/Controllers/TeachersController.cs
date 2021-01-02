@@ -132,6 +132,7 @@ namespace internetProgramming_TeemProject.Controllers
 
             return NoContent();
         }
+        [AllowAnonymous]
         [HttpGet("allTeacher")]
         public async Task<IActionResult> GetAllTeacher()
         {
